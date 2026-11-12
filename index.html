@@ -241,6 +241,39 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--white)
 .map-btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; background: #222; border: 1px solid #333; color: #fff; padding: 10px 18px; border-radius: 8px; text-decoration: none; font: 600 13px 'Barlow Condensed'; letter-spacing: .1em; text-transform: uppercase; transition: background 0.2s; }
 .map-btn:hover { background: #333; }
 
+  /* MAPA DE ALOJAMIENTO */
+.accommodation-map {
+  margin-top: 20px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #181818;
+}
+
+.accommodation-map iframe {
+  display: block;
+  width: 100%;
+  height: 430px;
+  border: 0;
+}
+
+.accommodation-map-description {
+  margin-top: 16px;
+  padding: 18px 20px;
+  background: rgba(66, 169, 193, 0.07);
+  border-left: 4px solid var(--cyan);
+  border-radius: 8px;
+  color: #d1d1d1;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  .accommodation-map iframe {
+    height: 350px;
+  }
+}
+
 /* FORMULARIO Y FAQ */
 .rsvp-form { display: grid; gap: 16px; margin-top: 15px; }
 .form-group { display: flex; flex-direction: column; gap: 6px; text-align: left; }
@@ -515,94 +548,49 @@ const tracksData = [
       <a href="https://maps.google.com/?q=Finca+La+Atlántida+O+Grove" target="_blank" class="map-btn">📍 Abrir ubicación en Google Maps</a>
     `
   },
+
 {
-    id: 3,
-    image: "alojamiento.jpg", // Imagen principal de esta sección
-    title: "ALOJAMIENTO",
-    subtitle: "¿Dónde dormir? · O Grove · A Lanzada · Sanxenxo",
-    duration: "24:07",
-    playedSeconds: 285,
-    content: `
-      <h3>03. Dónde Hospedarte (Gira Rías Baixas)</h3>
-      <p>Agosto es temporada alta en Galicia y la disponibilidad en la zona vuela. Os aconsejamos reservar vuestro alojamiento lo antes posible para evitar sorpresas.</p>
+  id: 3,
+  title: "ALOJAMIENTO",
+  subtitle: "La mejor zona para disfrutar del fin de semana",
+  image: "alojamiento.jpg",
+  content: `
+    <div class="section-subtitle">📍 Nuestra zona recomendada</div>
 
-      <!-- BLOQUE 1: ALOJAMIENTOS CERCANOS A LA FINCA -->
-      <div class="section-subtitle">📍 Opción A: Alojamiento Próximo a la Finca</div>
-      <p style="font-size: 14px; color: var(--muted); margin-bottom: 16px;">Ideal para quienes priorizan la cercanía al recinto del evento (O Grove / A Lanzada):</p>
+    <p style="font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 20px;">
+      Queremos ponéroslo fácil para organizar vuestro fin de semana.
+      Por eso, hemos seleccionado una zona que consideramos ideal
+      para buscar alojamiento, teniendo en cuenta su proximidad al
+      lugar de celebración y las diferentes alternativas disponibles.
+    </p>
 
-      <div class="grid-2" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 28px;">
-        
-        <!-- POUSADA DE A LANZADA -->
-        <div class="info-box" style="background: #222; border-radius: 12px; border: 1px solid var(--line); overflow: hidden;">
-          <img src="PousadaALanzada.jpg" alt="Posada Da Lanzada" style="width: 100%; height: 130px; object-fit: cover;">
-          <div style="padding: 16px;">
-            <strong style="font: 700 15px 'Barlow Condensed'; letter-spacing: 0.1em; color: var(--green); text-transform: uppercase; display: block; margin-bottom: 4px;">Posada Da Lanzada</strong>
-            <span style="font-size: 13px; color: #fff; font-weight: 600; display: block; margin-bottom: 6px;">A Lanzada · Muy cerca de la finca</span>
-            <span style="font-size: 13px; color: var(--muted); display: block; line-height: 1.5;">Ubicación privilegiada junto a la playa de A Lanzada. Entorno tranquilo y excelente acceso al evento.</span>
-          </div>
-        </div>
+    <div class="accommodation-map">
+      <iframe
+        src="https://www.google.com/maps/d/u/0/embed?mid=1C93yg2PZzwe0f-Z32mVtGeBm6i6OVxg&ehbc=2E312F&noprof=1"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Zona recomendada para alojarse">
+      </iframe>
+    </div>
 
-        <!-- HOTEL ABEIRAS -->
-        <div class="info-box" style="background: #222; border-radius: 12px; border: 1px solid var(--line); overflow: hidden;">
-          <img src="HotelAbeiras.jpg" alt="Hotel Abeiras" style="width: 100%; height: 130px; object-fit: cover;">
-          <div style="padding: 16px;">
-            <strong style="font: 700 15px 'Barlow Condensed'; letter-spacing: 0.1em; color: var(--green); text-transform: uppercase; display: block; margin-bottom: 4px;">Hotel Abeiras</strong>
-            <span style="font-size: 13px; color: #fff; font-weight: 600; display: block; margin-bottom: 6px;">A Toxa / O Grove · A pocos minutos</span>
-            <span style="font-size: 13px; color: var(--muted); display: block; line-height: 1.5;">Hotel acogedor con piscina y amplios jardines a escasos minutos de la Finca La Atlántida.</span>
-          </div>
-        </div>
+    <div class="accommodation-map-description">
+      <strong style="color: var(--cyan); display: block; margin-bottom: 8px;">
+        ¿Dónde os recomendamos alojaros?
+      </strong>
 
-        <!-- CAMPING Y GLAMPING MUIÑEIRA -->
-        <div class="info-box" style="background: #222; border-radius: 12px; border: 1px solid var(--line); overflow: hidden;">
-          <img src="CampingYGlampingMuiñeira.jpeg" alt="Camping y Glamping Muiñeira" style="width: 100%; height: 130px; object-fit: cover;">
-          <div style="padding: 16px;">
-            <strong style="font: 700 15px 'Barlow Condensed'; letter-spacing: 0.1em; color: var(--white); text-transform: uppercase; display: block; margin-bottom: 4px;">Camping y Glamping Muiñeira</strong>
-            <span style="font-size: 13px; color: var(--green); font-weight: 600; display: block; margin-bottom: 6px;">Muiñeira (A 10 min)</span>
-            <span style="font-size: 13px; color: var(--muted); display: block; line-height: 1.5;">Opción para los más aventureros y amantes de la naturaleza.</span>
-          </div>
-        </div>
+      Nuestra recomendación es buscar alojamiento dentro de la
+      zona delimitada en azul. Hemos seleccionado esta área para
+      que podáis estar cerca de la celebración y disfrutar del
+      fin de semana con mayor comodidad.
 
-      </div>
+      Encontraréis diferentes opciones de hoteles, apartamentos
+      y otros alojamientos para adaptarse a vuestras preferencias
+      y presupuesto.
+    </div>
+  `
+},
 
-      <!-- BLOQUE 2: ALOJAMIENTOS MÁS ALEJADOS Y ECONÓMICOS -->
-      <div class="section-subtitle">💶 Opción B: Alojamientos Más Económicos (Algo más alejados)</div>
-      <p style="font-size: 14px; color: var(--muted); margin-bottom: 16px;">Si preferís ajustar presupuesto y no os importa estar a unos minutos extra en coche o autobús:</p>
-
-      <div class="grid-2" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 20px;">
-        
-        <!-- HOTEL MARUXA -->
-        <div class="info-box" style="background: #222; border-radius: 12px; border: 1px solid var(--line); border-top: 3px solid var(--cyan); overflow: hidden;">
-          <img src="HotelMaruxa.avif" alt="Hotel Maruxa" style="width: 100%; height: 130px; object-fit: cover;">
-          <div style="padding: 16px;">
-            <strong style="font: 700 15px 'Barlow Condensed'; letter-spacing: 0.1em; color: var(--cyan); text-transform: uppercase; display: block; margin-bottom: 4px;">Hotel Maruxa ⭐ (Económico)</strong>
-            <span style="font-size: 13px; color: #fff; font-weight: 600; display: block; margin-bottom: 6px;">Zona Sanxenxo / Portonovo</span>
-            <span style="font-size: 13px; color: var(--muted); display: block; line-height: 1.5;">Una opción estupenda con precios más competitivos, ambiente familiar y excelente relación calidad-precio a corta distancia.</span>
-          </div>
-        </div>
-
-        <!-- PENSIÓN 9 OLAS -->
-        <div class="info-box" style="background: #222; border-radius: 12px; border: 1px solid var(--line); border-top: 3px solid var(--cyan); overflow: hidden;">
-          <img src="9Olas.jpg" alt="Pensión 9 Olas" style="width: 100%; height: 130px; object-fit: cover;">
-          <div style="padding: 16px;">
-            <strong style="font: 700 15px 'Barlow Condensed'; letter-spacing: 0.1em; color: var(--cyan); text-transform: uppercase; display: block; margin-bottom: 4px;">9 Olas</strong>
-            <span style="font-size: 13px; color: #fff; font-weight: 600; display: block; margin-bottom: 6px;">A 15-20 min de la finca</span>
-            <span style="font-size: 13px; color: var(--muted); display: block; line-height: 1.5;">Pensión familiar con vistas al mar y servicio de desayuno incluido.</span>
-          </div>
-        </div>
-
-        <!-- PENSIÓN CHELO -->
-        <div class="info-box" style="background: #222; border-radius: 12px; border: 1px solid var(--line); border-top: 3px solid var(--cyan); overflow: hidden;">
-          <img src="PensionChelo.jpg" alt="Pensión Chelo" style="width: 100%; height: 130px; object-fit: cover;">
-          <div style="padding: 16px;">
-            <strong style="font: 700 15px 'Barlow Condensed'; letter-spacing: 0.1em; color: var(--cyan); text-transform: uppercase; display: block; margin-bottom: 4px;">Pensión Chelo</strong>
-            <span style="font-size: 13px; color: #fff; font-weight: 600; display: block; margin-bottom: 6px;">A 15-20 min de la finca</span>
-            <span style="font-size: 13px; color: var(--muted); display: block; line-height: 1.5;">Pensión sencilla próxima a La Lanzada y con fácil acceso a la finca en coche.</span>
-          </div>
-        </div>
-
-      </div>
-    `
-  },
  {
     id: 4,
     image: "experiencias-locales.jpg", // Imagen principal de esta sección
