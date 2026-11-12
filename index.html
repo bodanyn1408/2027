@@ -326,7 +326,7 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--white)
 
 <section id="page-playlist" class="page">
  <header class="top-nav">
-  <button class="btn-back" onclick="navigateTo('page-hero')">← Volver a la Portada</button>
+  <button class="btn-back" onclick="goBack('page-hero')">← Volver a la Portada</button>
  </header>
  <main class="album">
   <section class="album-head">
@@ -347,7 +347,7 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--white)
 
 <section id="page-player" class="page">
  <header class="player-nav">
-  <button class="btn-back" onclick="navigateTo('page-playlist')">← Volver a la Playlist</button>
+  <button class="btn-back" onclick="goBack('page-playlist')">← Volver a la Playlist</button>
   <div class="now-playing-tag" id="player-tag">Pista 01</div>
  </header>
 
@@ -384,9 +384,13 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--white)
 <script>
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw6eIn6p6kDRF_JigjBLJ_Mh3w4bajjgRvk-i31t32AyH6IOYR-aqmHVMFwmY966e5o/exec';
 
+// IMÁGENES DE LAS SECCIONES:
+// Guarda los JPG indicados en cada propiedad "image" junto a este archivo HTML.
+// La portada mantiene su imagen independiente: ATARDECER.jpg.
 const tracksData = [
   {
     id: 1,
+    image: "el-gran-dia.jpg", // Imagen principal de esta sección
     title: "EL GRAN DÍA",
     subtitle: "Horarios · Ceremonia · Cóctel · Banquete · Fiesta",
     duration: "24:07",
@@ -465,6 +469,7 @@ const tracksData = [
   },
   {
     id: 2,
+    image: "localizacion-transporte.jpg", // Imagen principal de esta sección
     title: "LOCALIZACIÓN Y TRANSPORTE",
     subtitle: "Finca La Atlántida · Parking · Cómo Llegar",
     duration: "24:07",
@@ -512,6 +517,7 @@ const tracksData = [
   },
 {
     id: 3,
+    image: "alojamiento.jpg", // Imagen principal de esta sección
     title: "ALOJAMIENTO",
     subtitle: "¿Dónde dormir? · O Grove · A Lanzada · Sanxenxo",
     duration: "24:07",
@@ -599,6 +605,7 @@ const tracksData = [
   },
  {
     id: 4,
+    image: "experiencias-locales.jpg", // Imagen principal de esta sección
     title: "EXPERIENCIAS LOCALES",
     subtitle: " Escapadas · Marisco · Bodegas · Barcos · Buceo",
     duration: "24:07",
@@ -759,6 +766,7 @@ const tracksData = [
   },
   {
     id: 5,
+    image: "preguntas-frecuentes.jpg", // Imagen principal de esta sección
     title: "PREGUNTAS FRECUENTES",
     subtitle: "Resuelve tus dudas sobre la boda",
     duration: "24:07",
@@ -871,6 +879,7 @@ const tracksData = [
   },
   {
     id: 6,
+    image: "confirmacion.jpg", // Imagen principal de esta sección
     title: "CONFIRMACIÓN",
     subtitle: "Registro VIP · RSVP · Logística",
     duration: "24:07",
@@ -965,7 +974,10 @@ const tracksData = [
 let currentTrackIndex = 0;
 let isPlaying = true;
 
-function navigateTo(pageId) {
+// La navegación interna se sincroniza con el historial del navegador.
+// Así, Atrás del navegador/móvil y los botones de la web recorren las páginas
+// visitadas sin cerrar la web.
+function showPage(pageId) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
   const targetPage = document.getElementById(pageId);
   if (targetPage) targetPage.classList.add('active-page');
@@ -978,6 +990,43 @@ function navigateTo(pageId) {
     });
   }
 }
+
+function navigateTo(pageId, addToHistory = true) {
+  if (!document.getElementById(pageId)) return;
+
+  if (addToHistory) {
+    const currentPage = document.querySelector('.page.active-page');
+    const currentPageId = currentPage ? currentPage.id : 'page-hero';
+
+    // Evita añadir entradas duplicadas si ya estamos en esa página.
+    if (currentPageId !== pageId) {
+      window.history.pushState({ page: pageId }, '', window.location.href);
+    }
+  }
+
+  showPage(pageId);
+}
+
+// Los botones Atrás internos usan el mismo historial que el navegador.
+// El destino alternativo cubre el caso de abrir una subpágina directamente.
+function goBack(fallbackPage) {
+  if (window.history.state && window.history.state.page) {
+    window.history.back();
+  } else {
+    navigateTo(fallbackPage);
+  }
+}
+
+// Estado inicial de la aplicación.
+if (!window.history.state || !window.history.state.page) {
+  window.history.replaceState({ page: 'page-hero' }, '', window.location.href);
+}
+
+// Atrás del navegador, teclado o dispositivo móvil.
+window.addEventListener('popstate', event => {
+  const pageId = event.state && event.state.page ? event.state.page : 'page-hero';
+  showPage(pageId);
+});
 // Autoguardado de borrador en el formulario
 function setupFormAutosave() {
   document.addEventListener('input', (e) => {
@@ -1043,6 +1092,12 @@ function loadTrack(index) {
   document.getElementById('player-num').textContent = `TRACK ${String(t.id).padStart(2, '0')} DE ${String(tracksData.length).padStart(2, '0')}`;
   document.getElementById('player-title').textContent = `${String(t.id).padStart(2, '0')}. ${t.title}`;
   document.getElementById('player-content').innerHTML = t.content;
+
+  // Imagen principal propia de cada sección.
+  // Los archivos JPG deben estar en la misma carpeta que este HTML.
+  const playerArt = document.querySelector('.player-art');
+  playerArt.style.backgroundImage = `url("${t.image}")`;
+  playerArt.setAttribute('aria-label', `Imagen de ${t.title}`);
   document.getElementById('time-dur').textContent = t.duration;
   
   const totalSec = parseTimeToSeconds(t.duration);
