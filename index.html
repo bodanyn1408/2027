@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="es">
 <head>
@@ -14,6 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
 <style>
 :root {
   --cyan: #42a9c1;
@@ -27,221 +29,827 @@
   --muted: #b3b3b3;
   --foto-centro: url('ATARDECER.jpg');
 }
+
 * { box-sizing: border-box; }
-html, body { height: 100%; margin: 0; background: var(--bg); color: var(--white); font-family: 'DM Sans', sans-serif; }
-.cond { font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+}
+
+.cond {
+  font-family: 'Barlow Condensed', sans-serif;
+  text-transform: uppercase;
+}
 
 /* SISTEMA DE PÁGINAS INDEPENDIENTES */
-.page { 
-  display: none !important; 
-  width: 100vw; 
-  min-height: 100vh; 
-  position: absolute; 
-  top: 0; 
-  left: 0; 
-  z-index: 1; 
+
+.page {
+  display: none !important;
+  width: 100vw;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
   background: var(--bg);
 }
 
-.page.active-page { 
-  display: flex !important; 
-  flex-direction: column; 
-  z-index: 10; 
+.page.active-page {
+  display: flex !important;
+  flex-direction: column;
+  z-index: 10;
   animation: pageFadeIn 0.25s ease-out;
 }
 
-@keyframes pageFadeIn { 
-  from { opacity: 0; transform: scale(0.99); } 
-  to { opacity: 1; transform: scale(1); } 
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: scale(0.99); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 /* --- PÁGINA 1: PORTADA --- */
+
 #page-hero {
-  position: relative; overflow: hidden; display: grid; place-items: center; color: #fff;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  color: #fff;
   background: linear-gradient(135deg, #43aec4 0%, #2b82b6 34%, #1d58a5 68%, #283c98 100%);
   padding: 20px 0;
 }
+
 #page-hero:before {
-  content: ""; position: absolute; inset: 0;
-  background: radial-gradient(circle at 50% 42%, rgba(255,255,255,.13), transparent 30%),
-              radial-gradient(circle at 15% 80%, rgba(0,0,0,.16), transparent 38%),
-              radial-gradient(circle at 90% 15%, rgba(0,0,0,.1), transparent 35%);
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255,255,255,.13), transparent 30%),
+    radial-gradient(circle at 15% 80%, rgba(0,0,0,.16), transparent 38%),
+    radial-gradient(circle at 90% 15%, rgba(0,0,0,.1), transparent 35%);
 }
+
 #page-hero:after {
-  content: ""; position: absolute; inset: 24px; border: 2px solid rgba(7,25,63,.55);
+  content: "";
+  position: absolute;
+  inset: 24px;
+  border: 2px solid rgba(7,25,63,.55);
   clip-path: polygon(2% 0, 48% 0, 50% 8%, 52% 0, 98% 0, 100% 100%, 52% 100%, 50% 92%, 48% 100%, 2% 100%);
   pointer-events: none;
 }
-.hero-grid {
-  position: absolute; inset: 0;
-  background-image: linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px);
-  background-size: 42px 42px; mask-image: linear-gradient(to bottom, transparent, black 25%, transparent);
-}
-.hero-content { position: relative; z-index: 2; text-align: center; width: min(1180px, 94vw); padding: 30px 15px; display: flex; flex-direction: column; align-items: center; margin: auto; }
-.catalogue { font-size: clamp(16px, 2.2vw, 28px); font-weight: 800; letter-spacing: .035em; margin-bottom: 8px; text-shadow: 0 2px 0 rgba(0,0,0,.12); }
-.cover-mark { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 0 auto 14px; font: 600 12px 'Barlow Condensed'; letter-spacing: .18em; opacity: .9; }
-.cover-mark span { width: 45px; border-top: 1px dashed rgba(255,255,255,.7); }
 
-.vinyl-stage { 
-  width: min(380px, 75vw); 
-  aspect-ratio: 1; 
-  position: relative; 
-  display: grid; 
-  place-items: center; 
-  margin: 0 auto 14px; 
-  filter: drop-shadow(0 20px 24px rgba(7,25,63,.35)); 
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(to bottom, transparent, black 25%, transparent);
 }
-.vinyl-disc { 
-  position: absolute; inset: 0; border-radius: 50%; display: grid; place-items: center;
-  background: radial-gradient(circle at 50% 50%, #222 0 5.5%, #0d0d10 5.8% 6.8%, #18191d 7% 12%, #0b0b0d 12.3% 100%); 
-  box-shadow: inset 0 0 0 2px rgba(255,255,255,.12), inset 0 0 50px rgba(0,0,0,.9); 
-  animation: spinVinyl 16s linear infinite; z-index: 1;
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: min(1180px, 94vw);
+  padding: 30px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
 }
-.vinyl-disc:before { 
-  content: ""; position: absolute; inset: 2.5%; border-radius: 50%; 
-  background: repeating-radial-gradient(circle, #08080a 0 2px, #17181c 2.5px 3px); 
-  opacity: .7; mix-blend-mode: screen; pointer-events: none; 
+
+.catalogue {
+  font-size: clamp(16px, 2.2vw, 28px);
+  font-weight: 800;
+  letter-spacing: .035em;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 0 rgba(0,0,0,.12);
 }
+
+.cover-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 0 auto 14px;
+  font: 600 12px 'Barlow Condensed';
+  letter-spacing: .18em;
+  opacity: .9;
+}
+
+.cover-mark span {
+  width: 45px;
+  border-top: 1px dashed rgba(255,255,255,.7);
+}
+
+.vinyl-stage {
+  width: min(380px, 75vw);
+  aspect-ratio: 1;
+  position: relative;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 14px;
+  filter: drop-shadow(0 20px 24px rgba(7,25,63,.35));
+}
+
+.vinyl-disc {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 50% 50%, #222 0 5.5%, #0d0d10 5.8% 6.8%, #18191d 7% 12%, #0b0b0d 12.3% 100%);
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,.12), inset 0 0 50px rgba(0,0,0,.9);
+  animation: spinVinyl 16s linear infinite;
+  z-index: 1;
+}
+
+.vinyl-disc:before {
+  content: "";
+  position: absolute;
+  inset: 2.5%;
+  border-radius: 50%;
+  background: repeating-radial-gradient(circle, #08080a 0 2px, #17181c 2.5px 3px);
+  opacity: .7;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
 .vinyl-center-photo {
-  width: 42%; aspect-ratio: 1; border-radius: 50%; border: 4px solid var(--paper);
+  width: 42%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 4px solid var(--paper);
   background: var(--foto-centro) center/cover no-repeat #222;
   box-shadow: 0 0 0 2px rgba(11,27,67,.8), 0 6px 15px rgba(0,0,0,.6);
-  position: relative; display: grid; place-items: center;
-}
-.vinyl-center-photo:after {
-  content: ""; width: 14%; aspect-ratio: 1; border-radius: 50%; background: #10131b; border: 2px solid rgba(255,255,255,.75);
-}
-.vinyl-overlay {
-  position: absolute; inset: 0; z-index: 5; display: flex; flex-direction: column;
-  align-items: center; justify-content: space-between; padding: 6% 8% 10%; pointer-events: none;
+  position: relative;
+  display: grid;
+  place-items: center;
 }
 
-.curved-text-svg { width: 100%; height: auto; overflow: visible; }
+.vinyl-center-photo:after {
+  content: "";
+  width: 14%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #10131b;
+  border: 2px solid rgba(255,255,255,.75);
+}
+
+.vinyl-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6% 8% 10%;
+  pointer-events: none;
+}
+
+.curved-text-svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
 .curved-text-svg text {
-  font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 26px;
-  letter-spacing: 0.12em; fill: #ffffff; text-transform: uppercase;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 26px;
+  letter-spacing: 0.12em;
+  fill: #ffffff;
+  text-transform: uppercase;
   filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.9));
 }
 
-.vinyl-btn-container { width: 100%; display: flex; justify-content: center; pointer-events: auto; }
-.vinyl-play { 
-  display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 20px; 
-  border: 1px solid rgba(255,255,255,.9); border-radius: 999px; background: rgba(11,27,67,.85); 
-  backdrop-filter: blur(4px); color: #fff; font: 700 clamp(12px, 1.5vw, 15px)/1 'Barlow Condensed'; 
-  letter-spacing: .12em; text-transform: uppercase; cursor: pointer; transition: transform .2s, background .2s; 
+.vinyl-btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+.vinyl-play {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: 1px solid rgba(255,255,255,.9);
+  border-radius: 999px;
+  background: rgba(11,27,67,.85);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  font: 700 clamp(12px, 1.5vw, 15px)/1 'Barlow Condensed';
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform .2s, background .2s;
   box-shadow: 0 4px 12px rgba(0,0,0,.5);
 }
-.vinyl-play:hover { transform: scale(1.05); background: rgba(11,27,67,1); }
-@keyframes spinVinyl { to { transform: rotate(360deg); } }
 
-.date { font-size: clamp(20px, 3.2vw, 34px); font-weight: 700; letter-spacing: .15em; margin-top: 6px; }
-.place { font-size: 12px; letter-spacing: .15em; margin-top: 4px; opacity: .95; }
+.vinyl-play:hover {
+  transform: scale(1.05);
+  background: rgba(11,27,67,1);
+}
 
-.calendar-action { margin-top: 14px; position: relative; z-index: 5; }
+@keyframes spinVinyl {
+  to { transform: rotate(360deg); }
+}
+
+.date {
+  font-size: clamp(20px, 3.2vw, 34px);
+  font-weight: 700;
+  letter-spacing: .15em;
+  margin-top: 6px;
+}
+
+.place {
+  font-size: 12px;
+  letter-spacing: .15em;
+  margin-top: 4px;
+  opacity: .95;
+}
+
+.calendar-action {
+  margin-top: 14px;
+  position: relative;
+  z-index: 5;
+}
+
 .btn-calendar {
-  display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.15);
-  border: 1px solid rgba(255,255,255,0.4); border-radius: 20px; padding: 8px 16px;
-  color: #fff; font: 600 12px 'Barlow Condensed'; letter-spacing: .1em; text-transform: uppercase;
-  cursor: pointer; transition: all 0.2s ease; backdrop-filter: blur(5px);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 20px;
+  padding: 8px 16px;
+  color: #fff;
+  font: 600 12px 'Barlow Condensed';
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(5px);
 }
-.btn-calendar:hover { background: rgba(255,255,255,0.25); transform: translateY(-1px); }
 
-.countdown { 
-  display: grid; grid-template-columns: repeat(3, 1fr); max-width: 380px; width: min(380px, 90vw); 
-  margin: 16px auto 0; border-top: 2px dashed rgba(255,255,255,.55); border-bottom: 2px dashed rgba(255,255,255,.55); padding: 10px 0; 
+.btn-calendar:hover {
+  background: rgba(255,255,255,0.25);
+  transform: translateY(-1px);
 }
-.unit:not(:last-child) { border-right: 1px solid rgba(255,255,255,.25); }
-.num { font-family: 'Barlow Condensed'; font-size: clamp(28px, 5vw, 48px); font-weight: 700; line-height: .8; }
-.label { font-size: 9px; letter-spacing: .2em; margin-top: 4px; opacity: .85; }
+
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 380px;
+  width: min(380px, 90vw);
+  margin: 16px auto 0;
+  border-top: 2px dashed rgba(255,255,255,.55);
+  border-bottom: 2px dashed rgba(255,255,255,.55);
+  padding: 10px 0;
+}
+
+.unit:not(:last-child) {
+  border-right: 1px solid rgba(255,255,255,.25);
+}
+
+.num {
+  font-family: 'Barlow Condensed';
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 700;
+  line-height: .8;
+}
+
+.label {
+  font-size: 9px;
+  letter-spacing: .2em;
+  margin-top: 4px;
+  opacity: .85;
+}
 
 /* --- PÁGINA 2: PLAYLIST --- */
-#page-playlist { background: linear-gradient(180deg, #172238 0, #121212 430px, #101010 100%); }
-.top-nav { max-width: 1180px; margin: 0 auto; width: 100%; padding: 24px 30px; }
-.btn-back { background: none; border: none; display: inline-flex; align-items: center; gap: 9px; font: 600 15px 'Barlow Condensed'; letter-spacing: .1em; text-transform: uppercase; color: #fff; opacity: .8; cursor: pointer; padding: 0; }
+
+#page-playlist {
+  background: linear-gradient(180deg, #172238 0, #121212 430px, #101010 100%);
+}
+
+.top-nav {
+  max-width: 1180px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 24px 30px;
+}
+
+.btn-back {
+  background: none;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font: 600 15px 'Barlow Condensed';
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: .8;
+  cursor: pointer;
+  padding: 0;
+}
+
 .btn-back:hover { opacity: 1; }
-.album { max-width: 1180px; margin: 0 auto; width: 100%; padding: 20px 30px 90px; }
-.album-head { display: grid; grid-template-columns: 200px 1fr; gap: 36px; align-items: end; }
-.album-cover { width: 200px; aspect-ratio: 1; border-radius: 8px; background: var(--foto-centro) center/cover no-repeat #222; box-shadow: 0 18px 50px rgba(0,0,0,.6); }
-.eyebrow { font: 600 15px 'Barlow Condensed'; letter-spacing: .18em; text-transform: uppercase; color: #d7d7d7; margin-bottom: 10px; }
-.album-title { font: 800 clamp(44px, 5.5vw, 80px)/.85 'Barlow Condensed'; text-transform: uppercase; margin: 0; }
-.album-meta { margin-top: 16px; color: #c5c5c5; font-size: 14px; }
-.controls { display: flex; align-items: center; gap: 22px; margin: 30px 0 20px; }
-.play-btn-main { width: 54px; height: 54px; border: 0; border-radius: 50%; background: var(--green); color: #07140b; display: grid; place-items: center; font-size: 20px; cursor: pointer; box-shadow: 0 7px 20px rgba(30,215,96,.2); }
+
+.album {
+  max-width: 1180px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 20px 30px 90px;
+}
+
+.album-head {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 36px;
+  align-items: end;
+}
+
+.album-cover {
+  width: 200px;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  background: var(--foto-centro) center/cover no-repeat #222;
+  box-shadow: 0 18px 50px rgba(0,0,0,.6);
+}
+
+.eyebrow {
+  font: 600 15px 'Barlow Condensed';
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #d7d7d7;
+  margin-bottom: 10px;
+}
+
+.album-title {
+  font: 800 clamp(44px, 5.5vw, 80px)/.85 'Barlow Condensed';
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.album-meta {
+  margin-top: 16px;
+  color: #c5c5c5;
+  font-size: 14px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin: 30px 0 20px;
+}
+
+.play-btn-main {
+  width: 54px;
+  height: 54px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--green);
+  color: #07140b;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 7px 20px rgba(30,215,96,.2);
+}
+
 .tracks-list { border-top: 1px solid var(--line); }
-.track-item { display: grid; grid-template-columns: 45px 1fr 80px; gap: 16px; align-items: center; padding: 18px 12px; border-bottom: 1px solid var(--line); cursor: pointer; transition: background .2s, transform .2s; }
-.track-item:hover { background: #202020; transform: translateX(4px); }
-.track-item .n { color: #aaa; font: 600 16px 'Barlow Condensed'; text-align: center; }
-.track-item .name { font: 700 24px/1 'Barlow Condensed'; text-transform: uppercase; display: block; }
-.track-item .sub { font-size: 13px; color: var(--muted); margin-top: 4px; display: block; }
-.track-item .tag { text-align: right; color: var(--green); font: 600 13px 'Barlow Condensed'; letter-spacing: .1em; }
+
+.track-item {
+  display: grid;
+  grid-template-columns: 45px 1fr 80px;
+  gap: 16px;
+  align-items: center;
+  padding: 18px 12px;
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+}
+
+.track-item:hover {
+  background: #202020;
+  transform: translateX(4px);
+}
+
+.track-item .n {
+  color: #aaa;
+  font: 600 16px 'Barlow Condensed';
+  text-align: center;
+}
+
+.track-item .name {
+  font: 700 24px/1 'Barlow Condensed';
+  text-transform: uppercase;
+  display: block;
+}
+
+.track-item .sub {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 4px;
+  display: block;
+}
+
+.track-item .tag {
+  text-align: right;
+  color: var(--green);
+  font: 600 13px 'Barlow Condensed';
+  letter-spacing: .1em;
+}
 
 /* --- PÁGINA 3: REPRODUCTOR DE CANCIÓN --- */
-#page-player { justify-content: space-between; background: #121212; }
-.player-nav { padding: 20px 28px; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(180deg, rgba(29,88,165,.3) 0%, transparent 100%); }
-.now-playing-tag { font: 700 12px 'Barlow Condensed'; letter-spacing: .2em; text-transform: uppercase; color: var(--green); background: rgba(30,215,96,.1); padding: 4px 12px; border-radius: 12px; border: 1px solid rgba(30,215,96,.3); }
 
-.player-container { max-width: 860px; width: 92vw; margin: 10px auto 40px; display: flex; flex-direction: column; align-items: center; flex: 1; }
-.player-art { width: min(220px, 50vw); aspect-ratio: 1; border-radius: 12px; background: var(--foto-centro) center/cover no-repeat #222; box-shadow: 0 20px 60px rgba(0,0,0,.8), 0 0 40px rgba(29,88,165,.25); margin-bottom: 20px; }
+#page-player {
+  justify-content: space-between;
+  background: #121212;
+}
 
-.player-info { text-align: center; width: 100%; margin-bottom: 20px; }
-.player-track-num { font: 700 14px 'Barlow Condensed'; letter-spacing: .2em; color: var(--green); margin-bottom: 4px; }
-.player-track-title { font: 800 clamp(32px, 5vw, 52px)/.95 'Barlow Condensed'; text-transform: uppercase; margin: 0 0 8px; }
-.player-artist { font-size: 15px; color: var(--muted); font-weight: 500; }
+.player-nav {
+  padding: 20px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(180deg, rgba(29,88,165,.3) 0%, transparent 100%);
+}
 
-.player-controls-bar { width: 100%; max-width: 550px; margin-bottom: 30px; }
-.progress-bar-container { display: flex; align-items: center; gap: 12px; font: 500 12px 'Barlow Condensed'; color: var(--muted); margin-bottom: 16px; }
-.progress-bar { flex: 1; height: 4px; background: #3e3e3e; border-radius: 2px; position: relative; overflow: hidden; }
-.progress-fill { position: absolute; top: 0; left: 0; bottom: 0; width: 0%; background: var(--green); border-radius: 2px; transition: width 0.3s ease; }
-.control-btns { display: flex; align-items: center; justify-content: center; gap: 28px; }
-.ctrl-btn { background: none; border: none; color: var(--muted); font-size: 24px; cursor: pointer; transition: color .2s, transform .1s; display: grid; place-items: center; }
-.ctrl-btn:hover { color: #fff; transform: scale(1.1); }
-.ctrl-btn-play { width: 50px; height: 50px; border-radius: 50%; background: var(--white); color: #000; font-size: 20px; display: grid; place-items: center; box-shadow: 0 4px 15px rgba(255,255,255,.2); }
-.ctrl-btn-play:hover { transform: scale(1.06); background: var(--green); }
+.now-playing-tag {
+  font: 700 12px 'Barlow Condensed';
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--green);
+  background: rgba(30,215,96,.1);
+  padding: 4px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(30,215,96,.3);
+}
 
-.content-card { width: 100%; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 32px; box-shadow: 0 10px 30px rgba(0,0,0,.4); }
-.content-card h3 { font: 700 28px/1 'Barlow Condensed'; text-transform: uppercase; margin: 0 0 16px; color: var(--white); }
-.content-card p { line-height: 1.7; color: #d1d1d1; margin: 0 0 20px; font-size: 15px; }
+.player-container {
+  max-width: 860px;
+  width: 92vw;
+  margin: 10px auto 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.player-art {
+  width: min(220px, 50vw);
+  aspect-ratio: 1;
+  border-radius: 12px;
+  background: var(--foto-centro) center/cover no-repeat #222;
+  box-shadow: 0 20px 60px rgba(0,0,0,.8), 0 0 40px rgba(29,88,165,.25);
+  margin-bottom: 20px;
+}
+
+.player-info {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.player-track-num {
+  font: 700 14px 'Barlow Condensed';
+  letter-spacing: .2em;
+  color: var(--green);
+  margin-bottom: 4px;
+}
+
+.player-track-title {
+  font: 800 clamp(32px, 5vw, 52px)/.95 'Barlow Condensed';
+  text-transform: uppercase;
+  margin: 0 0 8px;
+}
+
+.player-artist {
+  font-size: 15px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.player-controls-bar {
+  width: 100%;
+  max-width: 550px;
+  margin-bottom: 30px;
+}
+
+.progress-bar-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font: 500 12px 'Barlow Condensed';
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 4px;
+  background: #3e3e3e;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  background: var(--green);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+/* CONTROLES DEL REPRODUCTOR - ESTILO SPOTIFY */
+
+.control-btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.ctrl-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  padding: 5px;
+  transition: transform .2s ease, color .2s ease;
+}
+
+.ctrl-btn:hover {
+  color: var(--green);
+  transform: scale(1.12);
+}
+
+.ctrl-btn:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 5px;
+  border-radius: 6px;
+}
+
+/* ICONOS ANTERIOR Y SIGUIENTE */
+
+.ctrl-btn svg {
+  width: 25px;
+  height: 25px;
+  display: block;
+  fill: currentColor;
+}
+
+/* BOTÓN CENTRAL PLAY / PAUSE */
+
+.ctrl-btn-play {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #fff;
+  color: #000;
+  padding: 0;
+  box-shadow: none;
+}
+
+.ctrl-btn-play:hover {
+  background: #fff;
+  color: #000;
+  transform: scale(1.08);
+}
+
+.ctrl-btn-play svg {
+  width: 29px;
+  height: 29px;
+  fill: #000;
+}
+
+.content-card {
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.4);
+}
+
+.content-card h3 {
+  font: 700 28px/1 'Barlow Condensed';
+  text-transform: uppercase;
+  margin: 0 0 16px;
+  color: var(--white);
+}
+
+.content-card p {
+  line-height: 1.7;
+  color: #d1d1d1;
+  margin: 0 0 20px;
+  font-size: 15px;
+}
 
 .section-subtitle {
-  font: 700 20px/1 'Barlow Condensed'; letter-spacing: 0.1em;
-  color: var(--green); text-transform: uppercase; margin: 30px 0 16px; display: flex; align-items: center; gap: 8px;
+  font: 700 20px/1 'Barlow Condensed';
+  letter-spacing: 0.1em;
+  color: var(--green);
+  text-transform: uppercase;
+  margin: 30px 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
-.section-subtitle:before { content: ""; display: inline-block; width: 8px; height: 8px; background: var(--green); border-radius: 50%; }
+
+.section-subtitle:before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--green);
+  border-radius: 50%;
+}
 
 /* ESTILOS TIMELINE SETLIST */
-.timeline-setlist { position: relative; padding-left: 20px; border-left: 2px dashed rgba(255,255,255,0.2); margin-top: 10px; }
-.setlist-item { position: relative; margin-bottom: 24px; padding-left: 20px; }
-.setlist-item:last-child { margin-bottom: 0; }
-.setlist-item:before {
-  content: ""; position: absolute; left: -27px; top: 4px; width: 12px; height: 12px;
-  background: var(--bg); border: 2px solid var(--green); border-radius: 50%; box-shadow: 0 0 8px rgba(30,215,96,0.6);
+
+.timeline-setlist {
+  position: relative;
+  padding-left: 20px;
+  border-left: 2px dashed rgba(255,255,255,0.2);
+  margin-top: 10px;
 }
-.setlist-header { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-.setlist-time { font: 800 24px/1 'Barlow Condensed'; color: var(--green); letter-spacing: 0.05em; }
-.setlist-title { font: 700 20px/1 'Barlow Condensed'; text-transform: uppercase; color: var(--white); }
-.setlist-genre { font-size: 11px; font-weight: 600; font-family: 'Barlow Condensed'; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); background: #222; padding: 2px 8px; border-radius: 4px; border: 1px solid var(--line); }
-.setlist-desc { font-size: 14px; color: #b3b3b3; margin: 6px 0 0; line-height: 1.5; }
+
+.setlist-item {
+  position: relative;
+  margin-bottom: 24px;
+  padding-left: 20px;
+}
+
+.setlist-item:last-child { margin-bottom: 0; }
+
+.setlist-item:before {
+  content: "";
+  position: absolute;
+  left: -27px;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  background: var(--bg);
+  border: 2px solid var(--green);
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(30,215,96,0.6);
+}
+
+.setlist-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.setlist-time {
+  font: 800 24px/1 'Barlow Condensed';
+  color: var(--green);
+  letter-spacing: 0.05em;
+}
+
+.setlist-title {
+  font: 700 20px/1 'Barlow Condensed';
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.setlist-genre {
+  font-size: 11px;
+  font-weight: 600;
+  font-family: 'Barlow Condensed';
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  background: #222;
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+}
+
+.setlist-desc {
+  font-size: 14px;
+  color: #b3b3b3;
+  margin: 6px 0 0;
+  line-height: 1.5;
+}
 
 /* ESTILOS ARTISTAS INVITADOS FEAT */
-.feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 15px; }
-.feat-card { background: #222; border-radius: 12px; padding: 16px; border: 1px solid var(--line); display: flex; align-items: center; gap: 14px; transition: border-color 0.2s, transform 0.2s; }
-.feat-card:hover { border-color: var(--green); transform: translateY(-2px); }
-.feat-avatar {
-  width: 56px; height: 56px; border-radius: 50%; background-color: #333;
-  background-size: cover; background-position: center; border: 2px solid var(--green); flex-shrink: 0;
+
+.feat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 15px;
 }
-.feat-info { display: flex; flex-direction: column; }
-.feat-role { font: 600 11px 'Barlow Condensed'; letter-spacing: 0.15em; color: var(--green); text-transform: uppercase; }
-.feat-name { font: 700 18px/1.2 'Barlow Condensed'; text-transform: uppercase; color: var(--white); margin: 2px 0 4px; }
-.feat-note { font-size: 12px; color: var(--muted); }
+
+.feat-card {
+  background: #222;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.feat-card:hover {
+  border-color: var(--green);
+  transform: translateY(-2px);
+}
+
+.feat-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #333;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid var(--green);
+  flex-shrink: 0;
+}
+
+.feat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.feat-role {
+  font: 600 11px 'Barlow Condensed';
+  letter-spacing: 0.15em;
+  color: var(--green);
+  text-transform: uppercase;
+}
+
+.feat-name {
+  font: 700 18px/1.2 'Barlow Condensed';
+  text-transform: uppercase;
+  color: var(--white);
+  margin: 2px 0 4px;
+}
+
+.feat-note {
+  font-size: 12px;
+  color: var(--muted);
+}
 
 /* MAPA Y BOTONES */
-.map-container { margin-top: 20px; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
-.map-container iframe { width: 100%; height: 260px; border: 0; display: block; }
-.map-btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; background: #222; border: 1px solid #333; color: #fff; padding: 10px 18px; border-radius: 8px; text-decoration: none; font: 600 13px 'Barlow Condensed'; letter-spacing: .1em; text-transform: uppercase; transition: background 0.2s; }
+
+.map-container {
+  margin-top: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 260px;
+  border: 0;
+  display: block;
+}
+
+.map-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  background: #222;
+  border: 1px solid #333;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font: 600 13px 'Barlow Condensed';
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  transition: background 0.2s;
+}
+
 .map-btn:hover { background: #333; }
 
-  /* MAPA DE ALOJAMIENTO */
+/* MAPA DE ALOJAMIENTO */
+
 .accommodation-map {
   margin-top: 20px;
   border: 1px solid var(--line);
@@ -268,51 +876,183 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--white)
   line-height: 1.7;
 }
 
-@media (max-width: 600px) {
-  .accommodation-map iframe {
-    height: 350px;
-  }
+/* FORMULARIO Y FAQ */
+
+.rsvp-form {
+  display: grid;
+  gap: 16px;
+  margin-top: 15px;
 }
 
-/* FORMULARIO Y FAQ */
-.rsvp-form { display: grid; gap: 16px; margin-top: 15px; }
-.form-group { display: flex; flex-direction: column; gap: 6px; text-align: left; }
-.form-group label { font: 600 13px 'Barlow Condensed'; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
-.form-group input, .form-group select { width: 100%; padding: 12px 14px; background: #222; border: 1px solid #333; border-radius: 8px; color: #fff; font-size: 14px; }
-.btn-submit { background: var(--green); color: #000; font: 700 16px 'Barlow Condensed'; letter-spacing: .1em; text-transform: uppercase; border: none; padding: 14px; border-radius: 8px; cursor: pointer; margin-top: 10px; transition: opacity 0.2s; }
-.btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
 
-.faq-container { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
-.faq-item { background: #222; border-radius: 10px; border: 1px solid var(--line); overflow: hidden; transition: border-color 0.2s; }
+.form-group label {
+  font: 600 13px 'Barlow Condensed';
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px 14px;
+  background: #222;
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.btn-submit {
+  background: var(--green);
+  color: #000;
+  font: 700 16px 'Barlow Condensed';
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: opacity 0.2s;
+}
+
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.faq-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.faq-item {
+  background: #222;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
 .faq-item[open] { border-color: var(--green); }
-.faq-summary { padding: 16px 20px; font: 700 18px/1.2 'Barlow Condensed'; letter-spacing: 0.05em; text-transform: uppercase; color: var(--white); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; user-select: none; }
-.faq-summary::-webkit-details-marker { display: none; }
-.faq-summary:after { content: '＋'; font-size: 18px; color: var(--green); transition: transform 0.2s; }
-.faq-item[open] .faq-summary:after { content: '－'; }
-.faq-content { padding: 0 20px 16px 20px; font-size: 14px; line-height: 1.6; color: #d1d1d1; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 8px; padding-top: 12px; }
 
-.footer-player { padding: 20px; text-align: center; font-size: 12px; color: #555; border-top: 1px solid #1a1a1a; }
+.faq-summary {
+  padding: 16px 20px;
+  font: 700 18px/1.2 'Barlow Condensed';
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--white);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+}
+
+.faq-summary::-webkit-details-marker { display: none; }
+
+.faq-summary:after {
+  content: '＋';
+  font-size: 18px;
+  color: var(--green);
+  transition: transform 0.2s;
+}
+
+.faq-item[open] .faq-summary:after { content: '－'; }
+
+.faq-content {
+  padding: 0 20px 16px 20px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #d1d1d1;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  margin-top: 8px;
+  padding-top: 12px;
+}
+
+.footer-player {
+  padding: 20px;
+  text-align: center;
+  font-size: 12px;
+  color: #555;
+  border-top: 1px solid #1a1a1a;
+}
+
+/* RESPONSIVE */
 
 @media(max-width: 600px) {
-  #page-hero { padding: 10px 0; justify-content: center; }
+  #page-hero {
+    padding: 10px 0;
+    justify-content: center;
+  }
+
   #page-hero:after { inset: 10px; }
+
   .hero-content { padding: 20px 10px; }
-  .catalogue { font-size: 16px; margin-bottom: 4px; }
-  .cover-mark { margin-bottom: 10px; font-size: 11px; }
-  .vinyl-stage { width: min(300px, 72vw); margin-bottom: 10px; }
-  .date { font-size: 22px; margin-top: 4px; }
+
+  .catalogue {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .cover-mark {
+    margin-bottom: 10px;
+    font-size: 11px;
+  }
+
+  .vinyl-stage {
+    width: min(300px, 72vw);
+    margin-bottom: 10px;
+  }
+
+  .date {
+    font-size: 22px;
+    margin-top: 4px;
+  }
+
   .place { font-size: 11px; }
+
   .calendar-action { margin-top: 10px; }
-  .countdown { margin-top: 12px; padding: 8px 0; max-width: 310px; }
+
+  .countdown {
+    margin-top: 12px;
+    padding: 8px 0;
+    max-width: 310px;
+  }
+
   .num { font-size: 26px; }
   .label { font-size: 8px; }
-  .album-head { grid-template-columns: 1fr; gap: 20px; text-align: center; }
-  .album-cover { width: 160px; margin: 0 auto; }
+
+  .album-head {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .album-cover {
+    width: 160px;
+    margin: 0 auto;
+  }
+
   .track-item { grid-template-columns: 30px 1fr 60px; }
+
   .content-card { padding: 20px 16px; }
+
+  .accommodation-map iframe { height: 350px; }
 }
 </style>
 </head>
+
 <body>
 
 <section id="page-hero" class="page active-page">
@@ -320,7 +1060,7 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--white)
  <div class="hero-content">
   <div class="catalogue cond">Los grandes éxitos de la Doble N <span>©</span></div>
   <div class="cover-mark"><span></span><b>EDICIÓN VINILO · 14 / 08 / 27</b><span></span></div>
-  
+
   <div class="vinyl-stage">
    <div class="vinyl-disc">
     <div class="vinyl-center-photo"></div>
@@ -342,7 +1082,7 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--white)
 
   <div class="date cond">14 · 08 · 2027</div>
   <div class="place">Finca La Atlántida · O Grove · Pontevedra</div>
-  
+
   <div class="calendar-action">
     <button class="btn-calendar" onclick="addToCalendar()">
       📅 Agendar en Google Calendar
@@ -361,6 +1101,7 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--white)
  <header class="top-nav">
   <button class="btn-back" onclick="goBack('page-hero')">← Volver a la Portada</button>
  </header>
+
  <main class="album">
   <section class="album-head">
    <div class="album-cover"></div>
@@ -370,10 +1111,12 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--white)
     <div class="album-meta"><b>NOE &amp; NÉSTOR</b> · 14/08/2027 · 6 Pistas · Finca La Atlántida</div>
    </div>
   </section>
+
   <div class="controls">
    <button class="play-btn-main" onclick="loadTrack(0)">▶</button>
    <span class="cond" style="color:#aaa; font-size:14px; letter-spacing:.1em;">Reproduce cada canción para saber más</span>
   </div>
+
   <section class="tracks-list" id="tracks-container"></section>
  </main>
 </section>
@@ -386,7 +1129,7 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--white)
 
  <main class="player-container">
   <div class="player-art"></div>
-  
+
   <div class="player-info">
    <div class="player-track-num" id="player-num">TRACK 01 DE 06</div>
    <h2 class="player-track-title" id="player-title">01. EL GRAN DÍA</h2>
@@ -399,10 +1142,35 @@ html, body { height: 100%; margin: 0; background: var(--bg); color: var(--white)
     <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
     <span id="time-dur">4:15</span>
    </div>
+
    <div class="control-btns">
-    <button class="ctrl-btn" onclick="prevTrack()">⏮</button>
-    <button class="ctrl-btn ctrl-btn-play" onclick="togglePlay()" id="btn-play-icon">⏸</button>
-    <button class="ctrl-btn" onclick="nextTrack()">⏭</button>
+
+    <!-- ANTERIOR -->
+    <button class="ctrl-btn" onclick="prevTrack()" aria-label="Anterior" title="Anterior">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6 5h3v14H6zM20 5v14L9 12z"/>
+      </svg>
+    </button>
+
+    <!-- PLAY / PAUSE -->
+    <button
+      class="ctrl-btn ctrl-btn-play"
+      id="btn-play"
+      onclick="togglePlay()"
+      aria-label="Reproducir"
+      title="Reproducir">
+      <svg id="btn-play-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M7 4v16l13-8z"/>
+      </svg>
+    </button>
+
+    <!-- SIGUIENTE -->
+    <button class="ctrl-btn" onclick="nextTrack()" aria-label="Siguiente" title="Siguiente">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M15 5h3v14h-3zM4 5v14l11-7z"/>
+      </svg>
+    </button>
+
    </div>
   </div>
 
@@ -420,10 +1188,11 @@ const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw6eIn6p6kDRF
 // IMÁGENES DE LAS SECCIONES:
 // Guarda los JPG indicados en cada propiedad "image" junto a este archivo HTML.
 // La portada mantiene su imagen independiente: ATARDECER.jpg.
+
 const tracksData = [
   {
     id: 1,
-    image: "el-gran-dia.jpg", // Imagen principal de esta sección
+    image: "el-gran-dia.jpg",
     title: "EL GRAN DÍA",
     subtitle: "Horarios · Ceremonia · Cóctel · Banquete · Fiesta",
     duration: "24:07",
@@ -431,7 +1200,7 @@ const tracksData = [
     content: `
       <h3>01. El orden de reproducción del 14 de agosto</h3>
       <p>A continuación os dejamos los horarios aproximados y los artistas invitados del gran día:</p>
-      
+
       <div class="section-subtitle">Setlist del Evento</div>
       <div class="timeline-setlist">
         <div class="setlist-item">
@@ -469,7 +1238,7 @@ const tracksData = [
 
       <div class="section-subtitle">Colaboraciones (Feat. Artists)</div>
       <p>Las voces e intervenciones especiales que harán inolvidable esta ceremonia:</p>
-      
+
       <div class="feat-grid">
         <div class="feat-card">
           <div class="feat-avatar" style="background-image: url('foto-invitado1.jpg');"></div>
@@ -500,9 +1269,10 @@ const tracksData = [
       </div>
     `
   },
+
   {
     id: 2,
-    image: "localizacion-transporte.jpg", // Imagen principal de esta sección
+    image: "localizacion-transporte.jpg",
     title: "LOCALIZACIÓN Y TRANSPORTE",
     subtitle: "Finca La Atlántida · Parking · Cómo Llegar",
     duration: "24:07",
@@ -510,7 +1280,7 @@ const tracksData = [
     content: `
       <h3>02. ¿Dónde tendrá lugar el evento?</h3>
       <p>El evento se desarrollará en un marco incomparable frente al Atlántico. Aquí tienes todo los detalles para llegar sin pérdida al recinto:</p>
-      
+
       <div class="grid-2" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 20px;">
         <div class="info-box" style="background: #222; padding: 18px; border-radius: 12px; border: 1px solid var(--line);">
           <strong style="font: 700 14px 'Barlow Condensed'; letter-spacing: 0.12em; color: var(--green); text-transform: uppercase; display: block; margin-bottom: 6px;">📍 Ubicación del Recinto</strong>
@@ -549,53 +1319,55 @@ const tracksData = [
     `
   },
 
-{
-  id: 3,
-  title: "ALOJAMIENTO",
-  subtitle: "La mejor zona para disfrutar del fin de semana",
-  image: "alojamiento.jpg",
-  content: `
-    <h3>03. ¿Dónde buscar alojamiento?</h3>
-    <div class="section-subtitle">📍 Nuestra zona recomendada</div>
+  {
+    id: 3,
+    title: "ALOJAMIENTO",
+    subtitle: "La mejor zona para disfrutar del fin de semana",
+    image: "alojamiento.jpg",
+    duration: "24:07",
+    playedSeconds: 333,
+    content: `
+      <h3>03. ¿Dónde buscar alojamiento?</h3>
+      <div class="section-subtitle">📍 Nuestra zona recomendada</div>
 
-    <p style="font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 20px;">
-      Queremos ponéroslo fácil para organizar vuestro fin de semana.
-      Por eso, hemos seleccionado una zona que consideramos ideal
-      para buscar alojamiento, teniendo en cuenta su proximidad al
-      lugar de celebración y las diferentes alternativas disponibles.
-    </p>
+      <p style="font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 20px;">
+        Queremos ponéroslo fácil para organizar vuestro fin de semana.
+        Por eso, hemos seleccionado una zona que consideramos ideal
+        para buscar alojamiento, teniendo en cuenta su proximidad al
+        lugar de celebración y las diferentes alternativas disponibles.
+      </p>
 
-   <div class="accommodation-map">
-  <iframe
-    src="https://www.google.com/maps/d/u/2/embed?mid=1_Pu4AIzmoVPBAxAUYntSlU6UQGUhL20&ehbc=2E312F&noprof=1"
-    width="100%"
-    height="430"
-    style="border:0;"
-    allowfullscreen
-    loading="lazy">
-  </iframe>
-</div>
+      <div class="accommodation-map">
+        <iframe
+          src="https://www.google.com/maps/d/u/2/embed?mid=1_Pu4AIzmoVPBAxAUYntSlU6UQGUhL20&ehbc=2E312F&noprof=1"
+          width="100%"
+          height="430"
+          style="border:0;"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      </div>
 
-    <div class="accommodation-map-description">
-      <strong style="color: var(--cyan); display: block; margin-bottom: 8px;">
-        ¿Dónde os recomendamos alojaros?
-      </strong>
+      <div class="accommodation-map-description">
+        <strong style="color: var(--cyan); display: block; margin-bottom: 8px;">
+          ¿Dónde os recomendamos alojaros?
+        </strong>
 
-      Nuestra recomendación es buscar alojamiento dentro de la
-      zona delimitada en azul. Hemos seleccionado esta área para
-      que podáis estar cerca de la celebración y disfrutar del
-      fin de semana con mayor comodidad.
+        Nuestra recomendación es buscar alojamiento dentro de la
+        zona delimitada en azul. Hemos seleccionado esta área para
+        que podáis estar cerca de la celebración y disfrutar del
+        fin de semana con mayor comodidad.
 
-      Encontraréis diferentes opciones de hoteles, apartamentos
-      y otros alojamientos para adaptarse a vuestras preferencias
-      y presupuesto.
-    </div>
-  `
-},
+        Encontraréis diferentes opciones de hoteles, apartamentos
+        y otros alojamientos para adaptarse a vuestras preferencias
+        y presupuesto.
+      </div>
+    `
+  },
 
- {
+  {
     id: 4,
-    image: "experiencias-locales.jpg", // Imagen principal de esta sección
+    image: "experiencias-locales.jpg",
     title: "EXPERIENCIAS LOCALES",
     subtitle: " Escapadas · Marisco · Bodegas · Barcos · Buceo",
     duration: "24:07",
@@ -603,12 +1375,11 @@ const tracksData = [
     content: `
       <h3>04. Bonus Tracks & Tour por las Rías Baixas</h3>
       <p>Aprovechando la "gira" del fin de semana, os dejamos nuestras recomendaciones VIP de restaurantes, bodegas, actividades acuáticas y excursiones por la provincia:</p>
-      
+
       <div class="section-subtitle">🦀 Paradas Gastronómicas (Donde Comer en O Grove)</div>
-      
+
       <div class="grid-2" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 24px;">
-        
-        <!-- RESTAURANTE 1: ASADOR O CHIRINGUITO (FOTO DEL PROPIO LOCAL) -->
+
         <div class="info-box" style="background: #222; border-radius: 12px; border: 1px solid var(--line); border-top: 3px solid var(--green); overflow: hidden;">
           <img src="AsadorOChiringuito.jpg" alt="Asador O Chiringuito O Grove" style="width: 100%; height: 140px; object-fit: cover;">
           <div style="padding: 16px;">
@@ -618,7 +1389,6 @@ const tracksData = [
           </div>
         </div>
 
-        <!-- RESTAURANTE 2: TABERNA LAVANDEIRO (FOTO DE PULPO Á FEIRA) -->
         <div class="info-box" style="background: #222; border-radius: 12px; border: 1px solid var(--line); border-top: 3px solid var(--green); overflow: hidden;">
           <img src="TabernaLavandeiro.jpg" alt="Pulpo á Feira Gallego" style="width: 100%; height: 140px; object-fit: cover;">
           <div style="padding: 16px;">
@@ -628,7 +1398,6 @@ const tracksData = [
           </div>
         </div>
 
-        <!-- RESTAURANTE 3: MARISQUERÍA SOLAINA (FOTO DE EMPANADA GALLEGA) -->
         <div class="info-box" style="background: #222; border-radius: 12px; border: 1px solid var(--line); overflow: hidden;">
           <img src="MarisqueriaASolaina.jpg" alt="Empanada Gallega Artesana" style="width: 100%; height: 140px; object-fit: cover;">
           <div style="padding: 16px;">
@@ -638,7 +1407,6 @@ const tracksData = [
           </div>
         </div>
 
-        <!-- RESTAURANTE 4: BEIRAMAR (FOTO DE ARROZ CALDOSO CON BOGAVANTE) -->
         <div class="info-box" style="background: #222; border-radius: 12px; border: 1px solid var(--line); overflow: hidden;">
           <img src="Beiramar.jpeg" alt="Arroz Caldoso con Bogavante" style="width: 100%; height: 140px; object-fit: cover;">
           <div style="padding: 16px;">
@@ -649,12 +1417,10 @@ const tracksData = [
         </div>
       </div>
 
-      <!-- EXCURSIONES Y ACTIVIDADES ACUÁTICAS DE MAR -->
       <div class="section-subtitle">🛥️ Excursiones &amp; Experiencias de Mar</div>
-      
+
       <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px;">
-        
-        <!-- PASEO CATAMARÁN BATEAS + DEGUSTACIÓN -->
+
         <div style="background: #1a1a1a; border-radius: 12px; border: 1px solid var(--line); overflow: hidden; display: flex; flex-wrap: wrap;">
           <img src="CatamaranYDegustacion.webp" alt="Catamarán y Degustación de Mejillones" style="width: 100%; max-width: 220px; height: 140px; object-fit: cover;">
           <div style="padding: 16px; flex: 1; min-width: 220px;">
@@ -663,7 +1429,6 @@ const tracksData = [
           </div>
         </div>
 
-        <!-- ILLA DE ONS -->
         <div style="background: #1a1a1a; border-radius: 12px; border: 1px solid var(--line); overflow: hidden; display: flex; flex-wrap: wrap;">
           <img src="IllaDeOns.jpg" alt="Illa de Ons Pontevedra" style="width: 100%; max-width: 220px; height: 140px; object-fit: cover;">
           <div style="padding: 16px; flex: 1; min-width: 220px;">
@@ -672,7 +1437,6 @@ const tracksData = [
           </div>
         </div>
 
-        <!-- BUCEO, ESNÓRQUEL Y BAUTISMO (NUEVA INCORPORACIÓN) -->
         <div style="background: #1a1a1a; border-radius: 12px; border: 1px solid var(--line); overflow: hidden; display: flex; flex-wrap: wrap;">
           <img src="BuceoYEsnorquel.jpg" alt="Buceo y Esnórquel en Rías Baixas" style="width: 100%; max-width: 220px; height: 140px; object-fit: cover;">
           <div style="padding: 16px; flex: 1; min-width: 220px;">
@@ -682,13 +1446,10 @@ const tracksData = [
         </div>
       </div>
 
-      <!-- BODEGAS Y ENOTURISMO D.O. RÍAS BAIXAS (AMPLIADO A 6 BODEGAS CON FEFIÑANES CORREGIDO) -->
       <div class="section-subtitle">🍷 Bodegas D.O. Rías Baixas (Ruta del Albariño)</div>
-      
+
       <div class="grid-2" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 24px;">
 
-
-        <!-- BODEGA 1 -->
         <div class="info-box" style="background: #222; border-radius: 12px; border: 1px solid var(--line); overflow: hidden;">
           <img src="Martincodax.jpg" alt="Bodega Martín Códax" style="width: 100%; height: 120px; object-fit: cover;">
           <div style="padding: 14px;">
@@ -697,8 +1458,6 @@ const tracksData = [
           </div>
         </div>
 
-
-        <!-- BODEGA 2 -->
         <div class="info-box" style="background: #222; border-radius: 12px; border: 1px solid var(--line); overflow: hidden;">
           <img src="MarDeFrades.jpeg" alt="Bodega Mar de Frades" style="width: 100%; height: 120px; object-fit: cover;">
           <div style="padding: 14px;">
@@ -707,7 +1466,6 @@ const tracksData = [
           </div>
         </div>
 
-        <!-- BODEGA 3 -->
         <div class="info-box" style="background: #222; border-radius: 12px; border: 1px solid var(--line); overflow: hidden;">
           <img src="TerrasGauda.webp" alt="Bodegas Terras Gauda" style="width: 100%; height: 120px; object-fit: cover;">
           <div style="padding: 14px;">
@@ -715,17 +1473,12 @@ const tracksData = [
             <span style="font-size: 12px; color: var(--muted); display: block; line-height: 1.4;">Una de las bodegas más prestigiosas elaborando ensamblajes de Albariño, Loureiro y Caíño Blanco.</span>
           </div>
         </div>
-
-       
-        </div>
       </div>
 
-      <!-- ESCAPADAS POR LA PROVINCIA CON FOTOS CORREGIDAS (CÍES Y COMBARRO) -->
       <div class="section-subtitle">📍 Escapadas por la Provincia de Pontevedra</div>
-      
+
       <div style="display: flex; flex-direction: column; gap: 16px;">
-        
-        <!-- ISLAS CÍES CON FOTO REAL CORREGIDA DE PLAYA DE RODAS -->
+
         <div style="background: #1a1a1a; border-radius: 12px; border: 1px solid var(--line); overflow: hidden; display: flex; flex-wrap: wrap;">
           <img src="Cies.jpg" alt="Playa de Rodas en Islas Cíes" style="width: 100%; max-width: 220px; height: 140px; object-fit: cover;">
           <div style="padding: 16px; flex: 1; min-width: 220px;">
@@ -734,7 +1487,6 @@ const tracksData = [
           </div>
         </div>
 
-        <!-- PONTEVEDRA CENTRO -->
         <div style="background: #1a1a1a; border-radius: 12px; border: 1px solid var(--line); overflow: hidden; display: flex; flex-wrap: wrap;">
           <img src="Pontevedra.jpeg" alt="Casco Antiguo Pontevedra" style="width: 100%; max-width: 220px; height: 140px; object-fit: cover;">
           <div style="padding: 16px; flex: 1; min-width: 220px;">
@@ -743,7 +1495,6 @@ const tracksData = [
           </div>
         </div>
 
-        <!-- COMBARRO CON FOTO REAL CORREGIDA DE HÓRREOS SOBRE EL MAR -->
         <div style="background: #1a1a1a; border-radius: 12px; border: 1px solid var(--line); overflow: hidden; display: flex; flex-wrap: wrap;">
           <img src="Combarro.jpeg" alt="Pueblo de Combarro Hórreos Mar" style="width: 100%; max-width: 220px; height: 140px; object-fit: cover;">
           <div style="padding: 16px; flex: 1; min-width: 220px;">
@@ -754,9 +1505,10 @@ const tracksData = [
       </div>
     `
   },
+
   {
     id: 5,
-    image: "preguntas-frecuentes.jpg", // Imagen principal de esta sección
+    image: "preguntas-frecuentes.jpg",
     title: "PREGUNTAS FRECUENTES",
     subtitle: "Resuelve tus dudas sobre la boda",
     duration: "24:07",
@@ -764,9 +1516,9 @@ const tracksData = [
     content: `
       <h3>05. Preguntas Frecuentes</h3>
       <p style="margin-bottom: 20px; color: var(--muted);">Despliega cada ítem para consultar todos los detalles logísticos del evento:</p>
-      
+
       <div class="faq-container">
-        
+
         <details class="faq-item">
           <summary class="faq-summary">📌 ¿Hay que confirmar asistencia?</summary>
           <div class="faq-content">
@@ -774,7 +1526,7 @@ const tracksData = [
             <p style="margin-top: 8px;">Os pedimos que nos confirméis lo antes posible (idealmente antes de mayo de 2027) a través del formulario de la <strong>Pista 06 (CONFIRMACIÓN)</strong> en esta misma web.</p>
           </div>
         </details>
-        
+
         <details class="faq-item">
           <summary class="faq-summary">🎟️ ¿Puedo ir acompañad@?</summary>
           <div class="faq-content">
@@ -782,7 +1534,7 @@ const tracksData = [
             <p style="margin-top: 8px;">Si tienes alguna duda sobre quiénes están incluidos en tu entrada, escríbenos directamente y te ayudamos encantados.</p>
           </div>
         </details>
-        
+
         <details class="faq-item">
           <summary class="faq-summary">👶 ¿Pueden venir niñ@s?</summary>
           <div class="faq-content">
@@ -790,16 +1542,16 @@ const tracksData = [
             <p style="margin-top: 8px;">Contaremos con escenarios secundarios, animadores y menús infantiles para que disfruten al máximo. No olvidéis indicarnos en el formulario de confirmación si necesitáis alguna ayuda extra para facilitaros la experiencia lo máximo posible. Además, rellenad su propio cuestionario para confirmar su asistencia y poder tener en cuenta cualquier alergia o intolerancia.</p>
           </div>
         </details>
-        
+
         <details class="faq-item">
           <summary class="faq-summary">🚌 ¿Habrá servicio de autobús?</summary>
           <div class="faq-content">
             <p><strong>Todavía no está decidido al 100%.</strong></p>
-            <p style="margin-top: 8px;">Dependerá enormemente de los alojamientos en los que os quedéis, podremos daros más información en cuanto tengamos recopiladas todas vuestras respuestas sobre el alojamiento en la Pista 06. 
+            <p style="margin-top: 8px;">Dependerá enormemente de los alojamientos en los que os quedéis, podremos daros más información en cuanto tengamos recopiladas todas vuestras respuestas sobre el alojamiento en la Pista 06.
               En caso de ser necesarios, la logística, paradas exactas y horarios definitivos se irán anunciando a través de esta web.</p>
           </div>
         </details>
-        
+
         <details class="faq-item">
           <summary class="faq-summary">🌧️ ¿Qué pasa si llueve el gran día?</summary>
           <div class="faq-content">
@@ -807,7 +1559,7 @@ const tracksData = [
             <p style="margin-top: 8px;">Finca La Atlántida cuenta con un <strong>Plan B impecable</strong> en espacios interiores acristalados y acondicionados, por lo que el show continuará al 100% pase lo que pase con la meteorología.</p>
           </div>
         </details>
-        
+
         <details class="faq-item">
           <summary class="faq-summary">🍽️ ¿Habrá menús adaptados (alergias/intolerancias)?</summary>
           <div class="faq-content">
@@ -815,15 +1567,14 @@ const tracksData = [
             <p style="margin-top: 8px;">En el formulario de confirmación podrás detallarnos si eres celíaco, vegetariano, vegano o si tienes alguna alergia o intolerancia alimentaria concreta y nos adaptaremos a ella sin ningún problema.</p>
           </div>
         </details>
-        
+
         <details class="faq-item" open>
           <summary class="faq-summary">📞 ¿Cómo puedo contactar con los novios?</summary>
           <div class="faq-content">
             <p style="margin-bottom: 16px; color: var(--muted);">¿Tienes alguna duda sobre la gira o necesitas comentarnos algo en privado? Escríbenos por tu canal preferido:</p>
-            
+
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 10px;">
-              
-              <!-- Tarjeta Noe -->
+
               <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 16px; text-align: center;">
                 <div style="font-weight: 700; color: #fff; font-size: 16px; margin-bottom: 10px;">🎤 NOE</div>
                 <div style="display: flex; flex-direction: column; gap: 8px;">
@@ -836,7 +1587,6 @@ const tracksData = [
                 </div>
               </div>
 
-              <!-- Tarjeta Néstor -->
               <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 16px; text-align: center;">
                 <div style="font-weight: 700; color: #fff; font-size: 16px; margin-bottom: 10px;">🎸 NÉSTOR</div>
                 <div style="display: flex; flex-direction: column; gap: 8px;">
@@ -852,7 +1602,7 @@ const tracksData = [
             </div>
           </div>
         </details>
-        
+
         <details class="faq-item">
           <summary class="faq-summary">🎁 ¿Y si queremos haceros un regalo?</summary>
           <div class="faq-content">
@@ -862,14 +1612,15 @@ const tracksData = [
               <strong>IBAN: ESXX XXXX XXXX XXXX XXXX XXXX</strong>
             </div>
           </div>
-                </details>
+        </details>
 
       </div>
     `
   },
+
   {
     id: 6,
-    image: "confirmacion.jpg", // Imagen principal de esta sección
+    image: "confirmacion.jpg",
     title: "CONFIRMACIÓN",
     subtitle: "Registro VIP · RSVP · Logística",
     duration: "24:07",
@@ -877,9 +1628,9 @@ const tracksData = [
     content: `
       <h3>06. Registro VIP & Logística de Gira</h3>
       <p>Para poder organizar el banquete, los espacios y asegurarnos de que todo salga perfecto, os pedimos que completéis este breve cuestionario antes de la fecha límite:</p>
-      
+
       <form class="rsvp-form" id="rsvpForm" onsubmit="handleRSVP(event)">
-        <!-- BLOQUE 1: DATOS PERSONALES Y ASISTENCIA -->
+
         <div class="section-subtitle">👤 1. Asistencia</div>
         <div class="form-group">
           <label>Nombre y Apellidos</label>
@@ -894,7 +1645,6 @@ const tracksData = [
           </select>
         </div>
 
-        <!-- BLOQUE 2: LOGÍSTICA DE LLEGADA Y ALOJAMIENTO -->
         <div class="section-subtitle">🏨 2. Alojamiento y Fechas de Llegada</div>
         <div class="form-group">
           <label>¿Cuándo tienes pensado llegar a la zona?</label>
@@ -912,7 +1662,6 @@ const tracksData = [
           <input type="text" name="alojamiento" placeholder="Ej: Hotel Louxo La Toja, Hotel en Sanxenxo, casa particular, etc.">
         </div>
 
-        <!-- BLOQUE 3: NIÑOS Y NECESIDADES ESPECIALES -->
         <div class="section-subtitle">👶 3. Niños y Asistencia Especial</div>
         <div class="form-group">
           <label>¿Vienes con niños?</label>
@@ -927,7 +1676,6 @@ const tracksData = [
           <input type="text" name="necesidadesEspeciales" placeholder="Ej: Espacio para carrito de bebé, trona, accesibilidad reducida, etc.">
         </div>
 
-        <!-- BLOQUE 4: ALERGIAS Y MENÚ -->
         <div class="section-subtitle">🍽️ 4. Menú y Alergias</div>
         <div class="form-group">
           <label>Alergias, Intolerancias o Dietas Especiales</label>
@@ -939,11 +1687,10 @@ const tracksData = [
           <select name="platoPrincipal">
             <option value="Carne">Soy carnívoro</option>
             <option value="Pescado">Un pescadito, que estamos a dos pasos del mar</option>
-             <option value="Otro">Necesito un menú especial o me apetece algo vegetal</option>
+            <option value="Otro">Necesito un menú especial o me apetece algo vegetal</option>
           </select>
         </div>
 
-        <!-- BLOQUE 5: IMPRESCINDIBLE EN UNA BODA & NOTAS -->
         <div class="section-subtitle">🎉 5. El Toque Especial</div>
         <div class="form-group">
           <label>Para ti, ¿qué es lo que NUNCA puede faltar en una buena boda?</label>
@@ -962,23 +1709,27 @@ const tracksData = [
 ];
 
 let currentTrackIndex = 0;
-let isPlaying = true;
+let isPlaying = false;
 
-// La navegación interna se sincroniza con el historial del navegador.
-// Así, Atrás del navegador/móvil y los botones de la web recorren las páginas
-// visitadas sin cerrar la web.
+/* NAVEGACIÓN ENTRE PÁGINAS */
+
 function showPage(pageId) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
+
   const targetPage = document.getElementById(pageId);
   if (targetPage) targetPage.classList.add('active-page');
+
   window.scrollTo(0, 0);
 
   const audio = document.getElementById('bg-audio');
+
   if (audio && pageId === 'page-playlist') {
     audio.play().catch(error => {
       console.log("El navegador requiere interacción adicional para reproducir audio:", error);
     });
   }
+
+  updatePlayIcon();
 }
 
 function navigateTo(pageId, addToHistory = true) {
@@ -988,7 +1739,6 @@ function navigateTo(pageId, addToHistory = true) {
     const currentPage = document.querySelector('.page.active-page');
     const currentPageId = currentPage ? currentPage.id : 'page-hero';
 
-    // Evita añadir entradas duplicadas si ya estamos en esa página.
     if (currentPageId !== pageId) {
       window.history.pushState({ page: pageId }, '', window.location.href);
     }
@@ -997,8 +1747,6 @@ function navigateTo(pageId, addToHistory = true) {
   showPage(pageId);
 }
 
-// Los botones Atrás internos usan el mismo historial que el navegador.
-// El destino alternativo cubre el caso de abrir una subpágina directamente.
 function goBack(fallbackPage) {
   if (window.history.state && window.history.state.page) {
     window.history.back();
@@ -1007,35 +1755,39 @@ function goBack(fallbackPage) {
   }
 }
 
-// Estado inicial de la aplicación.
 if (!window.history.state || !window.history.state.page) {
   window.history.replaceState({ page: 'page-hero' }, '', window.location.href);
 }
 
-// Atrás del navegador, teclado o dispositivo móvil.
 window.addEventListener('popstate', event => {
   const pageId = event.state && event.state.page ? event.state.page : 'page-hero';
   showPage(pageId);
 });
-// Autoguardado de borrador en el formulario
+
+/* AUTOGUARDADO DEL FORMULARIO */
+
 function setupFormAutosave() {
   document.addEventListener('input', (e) => {
     if (e.target.closest('#rsvpForm')) {
       const form = document.getElementById('rsvpForm');
       const formData = new FormData(form);
       const obj = {};
+
       formData.forEach((val, key) => obj[key] = val);
+
       localStorage.setItem('rsvp_draft', JSON.stringify(obj));
     }
   });
 
-  // Restaurar borrador al cargar
   const saved = localStorage.getItem('rsvp_draft');
+
   if (saved) {
     try {
       const data = JSON.parse(saved);
+
       setTimeout(() => {
         const form = document.getElementById('rsvpForm');
+
         if (form) {
           Object.keys(data).forEach(key => {
             const input = form.querySelector(`[name="${key}"]`);
@@ -1043,14 +1795,17 @@ function setupFormAutosave() {
           });
         }
       }, 300);
-    } catch(err){}
+    } catch(err) {}
   }
 }
 
 setupFormAutosave();
 
+/* RENDERIZAR PLAYLIST */
+
 function renderTracks() {
   const container = document.getElementById('tracks-container');
+
   container.innerHTML = tracksData.map((t, idx) => `
     <div class="track-item" onclick="loadTrack(${idx})">
       <span class="n">${String(t.id).padStart(2, '0')}</span>
@@ -1074,10 +1829,53 @@ function formatSeconds(sec) {
   return `${m}:${String(s).padStart(2, '0')}`;
 }
 
+/* ACTUALIZAR ICONO PLAY / PAUSE */
+
+function updatePlayIcon() {
+  const audio = document.getElementById('bg-audio');
+  const button = document.getElementById('btn-play');
+  const icon = document.getElementById('btn-play-icon');
+
+  if (!button || !icon) return;
+
+  // El estado se obtiene directamente del elemento de audio.
+  // Así el icono siempre representa lo que está ocurriendo realmente.
+  isPlaying = !!audio && !audio.paused;
+
+  if (isPlaying) {
+    // Icono PAUSE
+    icon.innerHTML = '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>';
+    button.setAttribute('aria-label', 'Pausar');
+    button.setAttribute('title', 'Pausar');
+  } else {
+    // Icono PLAY
+    icon.innerHTML = '<path d="M7 4v16l13-8z"/>';
+    button.setAttribute('aria-label', 'Reproducir');
+    button.setAttribute('title', 'Reproducir');
+  }
+}
+
+/* SINCRONIZAR LOS CONTROLES CON EL AUDIO */
+
+document.addEventListener('DOMContentLoaded', () => {
+  const audio = document.getElementById('bg-audio');
+
+  if (audio) {
+    audio.addEventListener('play', updatePlayIcon);
+    audio.addEventListener('playing', updatePlayIcon);
+    audio.addEventListener('pause', updatePlayIcon);
+    audio.addEventListener('ended', updatePlayIcon);
+    audio.addEventListener('emptied', updatePlayIcon);
+  }
+
+  updatePlayIcon();
+});
+
+/* CARGAR UNA PISTA */
+
 function loadTrack(index) {
   const t = tracksData[index];
 
-  // Comprobar que la pista existe
   if (!t) {
     console.error('No se encuentra la pista:', index);
     return;
@@ -1097,6 +1895,7 @@ function loadTrack(index) {
   document.getElementById('player-content').innerHTML = t.content;
 
   const playerArt = document.querySelector('.player-art');
+
   playerArt.style.backgroundImage = `url("${t.image}")`;
   playerArt.setAttribute('aria-label', `Imagen de ${t.title}`);
 
@@ -1112,48 +1911,89 @@ function loadTrack(index) {
 
     document.getElementById('progress-fill').style.width =
       percentage + '%';
+  } else {
+    document.getElementById('time-dur').textContent = '0:00';
+    document.getElementById('current-time').textContent = '0:00';
+    document.getElementById('progress-fill').style.width = '0%';
   }
-
-  isPlaying = true;
-  document.getElementById('btn-play-icon').textContent = '⏸';
 
   navigateTo('page-player');
+
+  // Mantener el audio de fondo y solicitar su reproducción.
+  const audio = document.getElementById('bg-audio');
+
+  if (audio) {
+    audio.play().then(() => {
+      updatePlayIcon();
+    }).catch(error => {
+      console.error('Error al reproducir la canción:', error);
+      updatePlayIcon();
+    });
+  }
+
+  updatePlayIcon();
 }
+
+/* PISTA ANTERIOR */
 
 function prevTrack() {
-  let idx = currentTrackIndex - 1;
-  if (idx < 0) idx = tracksData.length - 1;
-  loadTrack(idx);
+  currentTrackIndex--;
+
+  if (currentTrackIndex < 0) {
+    currentTrackIndex = tracksData.length - 1;
+  }
+
+  loadTrack(currentTrackIndex);
 }
+
+/* PISTA SIGUIENTE */
 
 function nextTrack() {
-  let idx = currentTrackIndex + 1;
-  if (idx >= tracksData.length) idx = 0;
-  loadTrack(idx);
+  currentTrackIndex++;
+
+  if (currentTrackIndex >= tracksData.length) {
+    currentTrackIndex = 0;
+  }
+
+  loadTrack(currentTrackIndex);
 }
 
+/* PLAY / PAUSE */
+
 function togglePlay() {
-  isPlaying = !isPlaying;
-  document.getElementById('btn-play-icon').textContent = isPlaying ? '⏸' : '▶';
-  
   const audio = document.getElementById('bg-audio');
-  if (audio) {
-    if (isPlaying) {
-      audio.play();
-    } else {
-      audio.pause();
-    }
+
+  if (!audio) {
+    console.error('No se encuentra el elemento de audio #bg-audio');
+    return;
+  }
+
+  if (audio.paused) {
+    audio.play().then(() => {
+      updatePlayIcon();
+    }).catch(error => {
+      console.error('No se ha podido reproducir el audio:', error);
+      updatePlayIcon();
+    });
+  } else {
+    audio.pause();
+    updatePlayIcon();
   }
 }
+
+/* ENVÍO DEL FORMULARIO RSVP */
 
 async function handleRSVP(event) {
   event.preventDefault();
+
   const btn = document.getElementById('btnSubmit');
   const form = document.getElementById('rsvpForm');
+
   btn.disabled = true;
   btn.textContent = 'Enviando...';
 
   const formData = new FormData(event.target);
+
   const data = {
     nombre: formData.get('nombre'),
     asistencia: formData.get('asistencia'),
@@ -1169,7 +2009,6 @@ async function handleRSVP(event) {
   };
 
   try {
-    // Usamos mode: 'no-cors' para salvar el bloqueo CORS de Apps Script
     await fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors',
@@ -1177,19 +2016,20 @@ async function handleRSVP(event) {
       body: JSON.stringify(data)
     });
 
-    // Si la petición sale del navegador sin error de red, mostramos éxito directamente
     renderSuccessCard(form, data.nombre);
 
   } catch (error) {
     console.error('Error al enviar:', error);
-    // Solo si falla la conexión a internet/red salta el aviso
+
     alert('Hubo un problema de conexión. Por favor, revisa tu red e inténtalo de nuevo.');
+
     btn.disabled = false;
     btn.textContent = 'Enviar Confirmación VIP ▶';
   }
 }
 
-// Función auxiliar para pintar la tarjeta VIP
+/* TARJETA DE CONFIRMACIÓN */
+
 function renderSuccessCard(formElement, nombreInvitado) {
   formElement.innerHTML = `
     <div style="background: #1e1e1e; border: 2px dashed var(--green); border-radius: 16px; padding: 24px; text-align: center; margin-top: 20px; animation: fadeIn 0.4s ease;">
@@ -1204,8 +2044,11 @@ function renderSuccessCard(formElement, nombreInvitado) {
       </p>
     </div>
   `;
+
   localStorage.removeItem('rsvp_draft');
 }
+
+/* GOOGLE CALENDAR */
 
 function addToCalendar() {
   const gCalUrl = "https://calendar.google.com/calendar/render?action=TEMPLATE" +
@@ -1213,9 +2056,11 @@ function addToCalendar() {
     "&dates=20270814T163000Z/20270815T020000Z" +
     "&details=" + encodeURIComponent("¡Nos casamos! Los grandes éxitos de la Doble N.") +
     "&location=" + encodeURIComponent("Finca La Atlántida, O Grove, Pontevedra");
-  
+
   window.open(gCalUrl, '_blank');
 }
+
+/* CUENTA ATRÁS */
 
 const targetDate = new Date('2027-08-14T18:30:00+02:00').getTime();
 
@@ -1223,9 +2068,13 @@ function tick() {
   let diff = Math.max(0, targetDate - Date.now()),
       s = Math.floor(diff / 1000),
       days = Math.floor(s / 86400);
+
   s %= 86400;
+
   let h = Math.floor(s / 3600);
+
   s %= 3600;
+
   let m = Math.floor(s / 60);
 
   document.getElementById('days').textContent = String(days).padStart(3, '0');
@@ -1233,12 +2082,14 @@ function tick() {
   document.getElementById('mins').textContent = String(m).padStart(2, '0');
 }
 
+/* INICIALIZACIÓN */
+
 renderTracks();
 tick();
 setInterval(tick, 1000);
 </script>
-<audio id="bg-audio" loop preload="auto">
-  <source src="Ibiza.mp3" type="audio/mpeg">
-</audio>
+
+<audio id="bg-audio" src="./Ibiza.mp3" controls preload="auto"></audio>
+
 </body>
 </html>
