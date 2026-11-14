@@ -1182,7 +1182,7 @@ html, body {
 </section>
 
 <script>
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw6eIn6p6kDRF_JigjBLJ_Mh3w4bajjgRvk-i31t32AyH6IOYR-aqmHVMFwmY966e5o/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzE0ab9bDiMsX2dEBtx26NSvgQHNTnuI2wag6is-1aAx26RqzluNjy2OqbcrIrVCLmq/exec';
 
 
 const tracksData = [
@@ -1658,6 +1658,9 @@ const tracksData = [
       <h3>06. Registro VIP & Logística de Gira</h3>
       <p>Para poder organizar el banquete, los espacios y asegurarnos de que todo salga perfecto, os pedimos que completéis este breve cuestionario antes de la fecha límite:</p>
 
+      <p>¡OS RECORDAMOS QUE NECESITAMOS QUE RELLENÉIS UN CUESTIONARIO POR INVITAD@ (INCLUYENDO A LOS PEQUEÑOS ROCKEROS)!</p>
+
+
       <form class="rsvp-form" id="rsvpForm" onsubmit="handleRSVP(event)">
 
         <div class="section-subtitle">👤 1. Asistencia</div>
@@ -1688,24 +1691,11 @@ const tracksData = [
 
         <div class="form-group">
           <label>¿Dónde tienes pensado alojarte?</label>
-          <input type="text" name="alojamiento" placeholder="Ej: Hotel Louxo La Toja, Hotel en Sanxenxo, casa particular, etc.">
+          <input type="text" name="alojamiento" placeholder="">
         </div>
 
-        <div class="section-subtitle">👶 3. Niños y Asistencia Especial</div>
-        <div class="form-group">
-          <label>¿Vienes con niños?</label>
-          <select name="vienenNinos">
-            <option value="No">No, vengo solo / en pareja sin niños</option>
-            <option value="Sí - Necesitan menú/trona">Sí, vengo con niños</option>
-          </select>
-        </div>
 
-        <div class="form-group">
-          <label>¿Necesitas alguna ayuda especial o adaptación?</label>
-          <input type="text" name="necesidadesEspeciales" placeholder="Ej: Espacio para carrito de bebé, trona, accesibilidad reducida, etc.">
-        </div>
-
-        <div class="section-subtitle">🍽️ 4. Menú y Alergias</div>
+        <div class="section-subtitle">🍽️ 3. Menú y Alergias</div>
         <div class="form-group">
           <label>Alergias, Intolerancias o Dietas Especiales</label>
           <input type="text" name="alergias" placeholder="Ej: Celíaco, Vegetariano, Alergia al marisco/frutos secos...">
@@ -1717,10 +1707,11 @@ const tracksData = [
             <option value="Carne">Soy carnívoro</option>
             <option value="Pescado">Un pescadito, que estamos a dos pasos del mar</option>
             <option value="Otro">Necesito un menú especial o me apetece algo vegetal</option>
+            <option value="Infantil">Todavía soy muy peque, me quedo con el menú infantil</option>
           </select>
         </div>
 
-        <div class="section-subtitle">🎉 5. El Toque Especial</div>
+        <div class="section-subtitle">🎉 4. El Toque Especial</div>
         <div class="form-group">
           <label>Para ti, ¿qué es lo que NUNCA puede faltar en una buena boda?</label>
           <input type="text" name="imprescindibleBoda" placeholder="Ej: Buen marisco, un buen tema de reggaetón viejo, recena, barra libre animada...">
@@ -2029,8 +2020,6 @@ async function handleRSVP(event) {
     fechaLlegada: formData.get('fechaLlegada'),
     alojamiento: formData.get('alojamiento') || 'No especificado',
     asistenciaPrevia: formData.get('asistenciaPrevia'),
-    vienenNinos: formData.get('vienenNinos'),
-    necesidadesEspeciales: formData.get('necesidadesEspeciales') || 'Ninguna',
     alergias: formData.get('alergias') || 'Ninguna',
     platoPrincipal: formData.get('platoPrincipal') || 'No especificado',
     imprescindibleBoda: formData.get('imprescindibleBoda') || 'No especificado',
