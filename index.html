@@ -1075,27 +1075,44 @@ function formatSeconds(sec) {
 }
 
 function loadTrack(index) {
-  currentTrackIndex = index;
   const t = tracksData[index];
-  
-  document.getElementById('player-tag').textContent = `Pista ${String(t.id).padStart(2, '0')}`;
-  document.getElementById('player-num').textContent = `TRACK ${String(t.id).padStart(2, '0')} DE ${String(tracksData.length).padStart(2, '0')}`;
-  document.getElementById('player-title').textContent = `${String(t.id).padStart(2, '0')}. ${t.title}`;
+
+  // Comprobar que la pista existe
+  if (!t) {
+    console.error('No se encuentra la pista:', index);
+    return;
+  }
+
+  currentTrackIndex = index;
+
+  document.getElementById('player-tag').textContent =
+    `Pista ${String(t.id).padStart(2, '0')}`;
+
+  document.getElementById('player-num').textContent =
+    `TRACK ${String(t.id).padStart(2, '0')} DE ${String(tracksData.length).padStart(2, '0')}`;
+
+  document.getElementById('player-title').textContent =
+    `${String(t.id).padStart(2, '0')}. ${t.title}`;
+
   document.getElementById('player-content').innerHTML = t.content;
 
-  // Imagen principal propia de cada sección.
-  // Los archivos JPG deben estar en la misma carpeta que este HTML.
   const playerArt = document.querySelector('.player-art');
   playerArt.style.backgroundImage = `url("${t.image}")`;
   playerArt.setAttribute('aria-label', `Imagen de ${t.title}`);
-  document.getElementById('time-dur').textContent = t.duration;
-  
-  const totalSec = parseTimeToSeconds(t.duration);
-  const currentSec = t.playedSeconds;
-  const percentage = Math.min(100, Math.max(0, (currentSec / totalSec) * 100));
 
-  document.getElementById('current-time').textContent = formatSeconds(currentSec);
-  document.getElementById('progress-fill').style.width = percentage + '%';
+  if (t.duration) {
+    document.getElementById('time-dur').textContent = t.duration;
+
+    const totalSec = parseTimeToSeconds(t.duration);
+    const currentSec = t.playedSeconds || 0;
+    const percentage = Math.min(100, Math.max(0, (currentSec / totalSec) * 100));
+
+    document.getElementById('current-time').textContent =
+      formatSeconds(currentSec);
+
+    document.getElementById('progress-fill').style.width =
+      percentage + '%';
+  }
 
   isPlaying = true;
   document.getElementById('btn-play-icon').textContent = '⏸';
