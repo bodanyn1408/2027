@@ -1305,7 +1305,7 @@ const tracksData = [
     playedSeconds: 187,
     content: `
       <h3>02. ¿Dónde tendrá lugar el evento?</h3>
-      <p>El evento se desarrollará en un marco incomparable frente al Atlántico. Aquí tienes todo los detalles para llegar sin pérdida al recinto:</p>
+      <p>Aquí tienes todo los detalles para llegar sin pérdida a la finca:</p>
 
       <div class="grid-2" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 20px;">
         <div class="info-box" style="background: #222; padding: 18px; border-radius: 12px; border: 1px solid var(--line);">
@@ -1330,10 +1330,10 @@ const tracksData = [
         </ul>
       </div>
 
-      <div class="section-subtitle">🚌 Bus Oficial de la Gira (Servicio de Autobuses)</div>
+      <div class="section-subtitle">🚌 Servicio de Autobuses</div>
       <div style="background: rgba(30, 215, 96, 0.05); padding: 18px; border-radius: 12px; border: 1px dashed rgba(30,215,96,0.3); margin-bottom: 24px;">
         <p style="margin: 0; font-size: 14px; color: #e0e0e0; line-height: 1.6;">
-          <strong>La logística de autobuses (en caso de ser necesarios) para llegar a la boda dependerá en gran medida de las zonas donde os alojéis la mayoría de los invitados. ¡Os pedimos que nos indiquéis vuestro alojamiento en la pestaña de confirmación para tenerlo en cuenta al planificar los trayectos!</strong>
+          <strong>La logística de autobuses para llegar a la boda dependerá en gran medida de las zonas donde os alojéis la mayoría de los invitados. ¡Os pedimos que nos indiquéis vuestro alojamiento en la pestaña de confirmación para tenerlo en cuenta al planificar los trayectos!</strong>
         </p>
       </div>
 
@@ -1360,12 +1360,12 @@ const tracksData = [
         Queremos ponéroslo fácil para organizar vuestro fin de semana.
         Por eso, hemos seleccionado una zona que consideramos ideal
         para buscar alojamiento, teniendo en cuenta su proximidad al
-        lugar de celebración y las diferentes alternativas disponibles.
+        lugar de celebración.
       </p>
 
       <div class="accommodation-map">
         <iframe
-          src="https://www.google.com/maps/d/u/2/embed?mid=1_Pu4AIzmoVPBAxAUYntSlU6UQGUhL20&ehbc=2E312F&noprof=1"
+          src="<iframe src="https://www.google.com/maps/d/u/2/embed?mid=1_Pu4AIzmoVPBAxAUYntSlU6UQGUhL20&ehbc=2E312F&noprof=1" width="640" height="480"></iframe>"
           width="100%"
           height="430"
           style="border:0;"
@@ -1384,9 +1384,13 @@ const tracksData = [
         que podáis estar cerca de la celebración y disfrutar del
         fin de semana con mayor comodidad.
 
-        Encontraréis diferentes opciones de hoteles, apartamentos
+        En el mapa contraréis diferentes opciones de hoteles, apartamentos
         y otros alojamientos para adaptarse a vuestras preferencias
-        y presupuesto.
+        y presupuesto. 
+
+        En caso de que muchos de vosotros os alojéis en esta zona es muy
+        probable que exista un servicio de autobuses tanto para llegar 
+        a la finca como para volver una vez haya terminado la celebración.
       </div>
     `
   },
@@ -1399,28 +1403,28 @@ const tracksData = [
     duration: "24:07",
     playedSeconds: 443,
     content: `
-      <h3>04. Bonus Tracks & Tour por las Rías Baixas</h3>
-      <p>Aprovechando la "gira" del fin de semana, os dejamos nuestras recomendaciones VIP de restaurantes, bodegas, actividades acuáticas y excursiones por la provincia:</p>
+      <h3>04. Bonus Tracks & Turismo por las Rías Baixas</h3>
+      <p>Aprovechando la "gira" del fin de semana, os dejamos nuestras recomendaciones de restaurantes, bodegas, actividades acuáticas y excursiones por la provincia:</p>
 
-      <div class="section-subtitle">🦀 Paradas Gastronómicas (Donde Comer en O Grove)</div>
+      <div class="section-subtitle">🦀 Recomendaciones Gastronómicas</div>
 
       <div class="grid-2" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 24px;">
 
         <div class="info-box" style="background: #222; border-radius: 12px; border: 1px solid var(--line); border-top: 3px solid var(--green); overflow: hidden;">
           <img src="AsadorOChiringuito.jpg" alt="Asador O Chiringuito O Grove" style="width: 100%; height: 140px; object-fit: cover;">
           <div style="padding: 16px;">
-            <strong style="font: 700 14px 'Barlow Condensed'; letter-spacing: 0.12em; color: var(--green); text-transform: uppercase; display: block; margin-bottom: 4px;">Asador O Chiringuito ⭐ (Top Calidad-Precio)</strong>
+            <strong style="font: 700 14px 'Barlow Condensed'; letter-spacing: 0.12em; color: var(--green); text-transform: uppercase; display: block; margin-bottom: 4px;">Asador O Chiringuito</strong>
             <span style="font-size: 13px; color: #fff; font-weight: 600; display: block; margin-bottom: 6px;">Paseo Beiramar, O Grove</span>
-            <span style="font-size: 13px; color: var(--muted); display: block; line-height: 1.5;">La mejor opción para mariscadas frescas, navajas y pescados a la parrilla con calidad-precio imbatible.</span>
+            <span style="font-size: 13px; color: var(--muted); display: block; line-height: 1.5;">La mejor opción para mariscadas frescas y pescados a la parrilla con calidad-precio imbatible.</span>
           </div>
         </div>
 
         <div class="info-box" style="background: #222; border-radius: 12px; border: 1px solid var(--line); border-top: 3px solid var(--green); overflow: hidden;">
           <img src="TabernaLavandeiro.jpg" alt="Pulpo á Feira Gallego" style="width: 100%; height: 140px; object-fit: cover;">
           <div style="padding: 16px;">
-            <strong style="font: 700 14px 'Barlow Condensed'; letter-spacing: 0.12em; color: var(--green); text-transform: uppercase; display: block; margin-bottom: 4px;">Taberna Lavandeiro ⭐ (Pulpo &amp; Tapas)</strong>
+            <strong style="font: 700 14px 'Barlow Condensed'; letter-spacing: 0.12em; color: var(--green); text-transform: uppercase; display: block; margin-bottom: 4px;">Taberna Lavandeiro</strong>
             <span style="font-size: 13px; color: #fff; font-weight: 600; display: block; margin-bottom: 6px;">Rúa Castelao, O Grove</span>
-            <span style="font-size: 13px; color: var(--muted); display: block; line-height: 1.5;">Especialistas en auténtico Pulpo á Feira sobre plato de madera con aceite y pimentón, zamburiñas y almejas marineras a precios muy económicos.</span>
+            <span style="font-size: 13px; color: var(--muted); display: block; line-height: 1.5;">Destaca por su producto fresco de la ría, su ambiente acogedor. Especialistas en arroz de marisco y arroz con bogavante.</span>
           </div>
         </div>
 
@@ -1429,7 +1433,7 @@ const tracksData = [
           <div style="padding: 16px;">
             <strong style="font: 700 14px 'Barlow Condensed'; letter-spacing: 0.12em; color: var(--white); text-transform: uppercase; display: block; margin-bottom: 4px;">Marisquería A Solaina</strong>
             <span style="font-size: 13px; color: var(--green); font-weight: 600; display: block; margin-bottom: 6px;">Empanadas &amp; Vivero Propio</span>
-            <span style="font-size: 13px; color: var(--muted); display: block; line-height: 1.5;">Mítica empanada gallega artesanal de xoubas, zamburiñas o berberechos, además de percebes, nécoras recién cocidas y mariscos de vivero.</span>
+            <span style="font-size: 13px; color: var(--muted); display: block; line-height: 1.5;">Tradicional marisquería reconocida por sus mariscos y pescados frescos.</span>
           </div>
         </div>
 
@@ -1438,7 +1442,7 @@ const tracksData = [
           <div style="padding: 16px;">
             <strong style="font: 700 14px 'Barlow Condensed'; letter-spacing: 0.12em; color: var(--white); text-transform: uppercase; display: block; margin-bottom: 4px;">Restaurante Beiramar</strong>
             <span style="font-size: 13px; color: var(--green); font-weight: 600; display: block; margin-bottom: 6px;">Especialidad Arroz con Bogavante</span>
-            <span style="font-size: 13px; color: var(--muted); display: block; line-height: 1.5;">Insuperable arroz caldoso con bogavante marinero y cazuelas de pescado fresco frente al paseo marítimo con vistas al mar.</span>
+            <span style="font-size: 13px; color: var(--muted); display: block; line-height: 1.5;">Destaca por su ambiente íntimo y cuidado, sus cetáreas propias de crustáceos y una cocina marinera de producto fresco de la ría.</span>
           </div>
         </div>
       </div>
@@ -1459,7 +1463,7 @@ const tracksData = [
           <img src="IllaDeOns.jpg" alt="Illa de Ons Pontevedra" style="width: 100%; max-width: 220px; height: 140px; object-fit: cover;">
           <div style="padding: 16px; flex: 1; min-width: 220px;">
             <strong style="font: 700 16px 'Barlow Condensed'; color: var(--white); text-transform: uppercase; display: block; margin-bottom: 4px;">Excursión a la Isla de Ons</strong>
-            <span style="font-size: 13px; color: var(--muted); line-height: 1.5; display: block;">Viaje en barco desde Portonovo/Sanxenxo para conocer el archipiélago de Ons. Famosa por sus senderos, la sobrecogedora cueva marina 'Buraco do Inferno' y probar su mítico Pulpo al Estilo Ons en Casa Acuña.</span>
+            <span style="font-size: 13px; color: var(--muted); line-height: 1.5; display: block;">Viaje en barco desde Portonovo/Sanxenxo para conocer la isla de Ons. Famosa por sus senderos, la sobrecogedora cueva marina 'Buraco do Inferno' y probar su mítico Pulpo al Estilo Ons en Casa Acuña.</span>
           </div>
         </div>
 
@@ -1509,7 +1513,7 @@ const tracksData = [
           <img src="Cies.jpg" alt="Playa de Rodas en Islas Cíes" style="width: 100%; max-width: 220px; height: 140px; object-fit: cover;">
           <div style="padding: 16px; flex: 1; min-width: 220px;">
             <strong style="font: 700 16px 'Barlow Condensed'; color: var(--white); text-transform: uppercase; display: block; margin-bottom: 4px;">Islas Cíes (Vigo / Cangas)</strong>
-            <span style="font-size: 13px; color: var(--muted); line-height: 1.5; display: block;">Foto de la mundialmente famosa Playa de Rodas. Considerada una de las mejores playas del mundo. Requiere reservar barco con antelación desde Vigo o Cangas.</span>
+            <span style="font-size: 13px; color: var(--muted); line-height: 1.5; display: block;">Si dispones de más días te recomendamos encarecidamente que hagas una visita a las islas Cíes y disfrutes de su cielo estrellado y sus increíbles playas. Requiere reservar barco con antelación desde Vigo o Cangas y solicitar un permiso a la Xunta.</span>
           </div>
         </div>
 
@@ -1517,15 +1521,15 @@ const tracksData = [
           <img src="Pontevedra.jpeg" alt="Casco Antiguo Pontevedra" style="width: 100%; max-width: 220px; height: 140px; object-fit: cover;">
           <div style="padding: 16px; flex: 1; min-width: 220px;">
             <strong style="font: 700 16px 'Barlow Condensed'; color: var(--white); text-transform: uppercase; display: block; margin-bottom: 4px;">Casco Histórico de Pontevedra</strong>
-            <span style="font-size: 13px; color: var(--muted); line-height: 1.5; display: block;">A 35 min de O Grove. Un centro histórico peatonal perfecto para pasear, tapear por la Plaza de la Leña y visitar la Basílica de la Peregrina.</span>
+            <span style="font-size: 13px; color: var(--muted); line-height: 1.5; display: block;">A 35 min de O Grove. Un centro histórico peatonal perfecto para pasear por la ría, tapear por la Plaza de la Leña, visitar la Iglesia de la Peregrina y, en definitiva, conocer la capital de la provincia.</span>
           </div>
         </div>
 
         <div style="background: #1a1a1a; border-radius: 12px; border: 1px solid var(--line); overflow: hidden; display: flex; flex-wrap: wrap;">
           <img src="Combarro.jpeg" alt="Pueblo de Combarro Hórreos Mar" style="width: 100%; max-width: 220px; height: 140px; object-fit: cover;">
           <div style="padding: 16px; flex: 1; min-width: 220px;">
-            <strong style="font: 700 16px 'Barlow Condensed'; color: var(--white); text-transform: uppercase; display: block; margin-bottom: 4px;">Pueblo de Combarro</strong>
-            <span style="font-size: 13px; color: var(--muted); line-height: 1.5; display: block;">Foto de las pintorescas rúas de Combarro con sus míticos hórreos de piedra construidos al borde de la ría y cruceiros marineros.</span>
+            <strong style="font: 700 16px 'Barlow Condensed'; color: var(--white); text-transform: uppercase; display: block; margin-bottom: 4px;">Combarro</strong>
+            <span style="font-size: 13px; color: var(--muted); line-height: 1.5; display: block;">Otra visita muy interesante es el pueblo de Combarro con sus míticos hórreos de piedra construidos al borde de la ría y cruceiros marineros.</span>
           </div>
         </div>
       </div>
@@ -1635,7 +1639,7 @@ const tracksData = [
             <p><strong>El mejor regalo es vuestra presencia</strong> y que lo deis todo con nosotros en la pista de baile. ❤️</p>
             <p style="margin-top: 10px;">Si aun así queréis colaborar con nuestra "Fila Cero" / viaje de novios, os dejamos por aquí nuestra cuenta:</p>
             <div style="background: rgba(255, 255, 255, 0.05); border: 1px dashed var(--green); padding: 14px; border-radius: 8px; text-align: center; margin-top: 12px; font-family: monospace; font-size: 15px; color: var(--green);">
-              <strong>IBAN: ESXX XXXX XXXX XXXX XXXX XXXX</strong>
+              <strong>IBAN: ES26 1583 0001 1391 0480 8630</strong>
             </div>
           </div>
         </details>
